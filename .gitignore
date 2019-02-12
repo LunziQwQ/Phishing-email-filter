@@ -1,0 +1,6 @@
+### IDE generated
+.vscode/
+.idea/
+
+### OS generated
+#/.DS_Store
