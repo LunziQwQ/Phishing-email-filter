@@ -6,8 +6,11 @@ from os import path
 
 
 class EmailInfo:
-
     def __init__(self, eml):
+        """
+        构造方法，从eml对象中解析出数据
+        :param eml: eml_reader获取的eml对象
+        """
         self.is_multipart = eml.is_multipart()
         self.subject = eml.get("subject")
         self.sender = email.utils.parseaddr(eml.get("from"))[1]
@@ -22,10 +25,16 @@ class EmailInfo:
 
         if eml.is_multipart():
             for block in eml.walk():
+
+                # 保存html类型的内容块
                 if block.get_content_type() == "text/html":
                     self.html_block.append(block.get_payload(decode=True).decode())
+
+                # 保存plain文本的内容块
                 if block.get_content_type() == "text/plain":
                     self.plain_block.append(block.get_payload(decode=True).decode())
+
+                # 保存附件到/tmp/pef/pef_files
                 if block.get_filename():
                     file_name = block.get_filename()
                     file_data = block.get_payload(decode=True)
@@ -36,9 +45,14 @@ class EmailInfo:
                     with open(path.join("/tmp/pef/pef_files", self.subject, file_name), "wb") as f:
                         f.write(file_data)
                     self.files.append(save_path)
+
         self.links = self.get_links()
 
     def get_links(self):
+        """
+        通过正则表达式，匹配所有html块里的a标签内容
+        :return: 元组列表 -> (url, 描述文字)
+        """
         links = []
         for html in self.html_block:
             links.extend(re.findall("""<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)</a>""", html))
@@ -46,6 +60,11 @@ class EmailInfo:
         return links
 
     def __str__(self):
+        """
+        将对象转化为字符串，在输出时会默认调用
+        :return: string
+        """
+
         return "====== eml info ======\n" \
                "subject: %s\n" \
                "sender: %s\n" \
