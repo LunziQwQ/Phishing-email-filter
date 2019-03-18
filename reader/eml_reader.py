@@ -1,8 +1,9 @@
 import email
 import os
+from reader.email_info import EmailInfo
 
 
-class Reader:
+class EmlReader:
     def __init__(self, path):
         if not os.path.exists(path):
             raise FileNotFoundError
@@ -11,15 +12,5 @@ class Reader:
             self.eml = email.message_from_file(f)
 
     def read(self):
-        info = EmailInfo()
+        info = EmailInfo(self.eml)
         return info
-
-
-class EmailInfo:
-    def __init__(self):
-        pass
-
-
-def read_eml(path):
-    reader = Reader(path)
-    return reader.read()

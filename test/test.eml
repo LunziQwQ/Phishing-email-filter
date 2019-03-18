@@ -1,0 +1,246 @@
+Received: from mta.mailer.atlassian.com (unknown [66.231.88.91])
+	by bizmx17.qq.com (NewMx) with SMTP id 
+	for <KylinJiang@xxx.com>; Thu, 07 Mar 2019 02:03:16 +0800
+X-QQ-FEAT: Zqt3rqdPGzjhp5L/i99GSVCVdn9jbtrYIK7e90utCEujEutP83AjkIPQY8Z4R
+	Cb7GlUGhPTeJyE4iBWj7JoMi/A6Jg42jkJ+hGvXBCKsBSbGBK7kajfCigV6aETCsMywTHqS
+	sxl2xdz37CQYpMkucSSxkygbJI+mC5JP9fftbptzprIR0GeIAd83hGkSI0LjhV8dle+xBxo
+	jIo5JyuEMUKvKeLv65cWdD/aXOv2VeFDKrCTIUeDnmtHsz4WMp8tcxMmMx5vZFb/bBbqRu5
+	TcTKt0s3ETNysQiavM46tpz7WEMms+FoghiNDZ+HJ4/HIihlMmN8R6ujbTJJWN28S2Mb2wt
+	LOSUJ4m
+X-QQ-MAILINFO: NUg6+50bucXdXlr/YXbvGM9RxrGKBL40HhTYw+laX7Z//dLIHZ7oEk7ba
+	kOeT0Hb9QTMJPmBT4de0Tos7s9lLf2YQeUiNfzbQ67DNklp9CTAyi5ycBqFxk0IEUYLhKWB
+	sdhpdpVGrzFk3qAQtBOAitMDAVCWyHusVaIuc834WX44bQgXQZ6326o=
+X-QQ-mid: bizmx17t1551895397tdj387qdh
+X-QQ-CSender: bounce-219880_HTML-1418687236-103981272-132689-380@bounce.mailer.atlassian.com
+X-QQ-ORGSender: bounce-219880_HTML-1418687236-103981272-132689-380@bounce.mailer.atlassian.com
+X-KK-mid:bizmxp6t1551895397tgzika4mb
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=200608; d=mailer.atlassian.com;
+ h=From:To:Subject:Date:MIME-Version:Reply-To:List-ID:Message-ID:Content-Type;
+ i=noreply@mailer.atlassian.com;
+ bh=uepgBYwY21/gyMNGGZL2MK4qKEVogQMvPIHI35vkrK0=;
+ b=xeoJNcbJk9TLpEFRUZ/i7Q9RXLMovD21Z/Sk/z20EWrJJ8q2e9AicRw+e42hErIRThsPRADNjqyA
+   5f5sNrJqtoVthI9LWa3GBxR5bLNw1r0TczfXtsHS+ZtVBWSWQOaHrlvwj56E5tD5v1+FWmblr3Wa
+   1K6cHy0w3YCdOU75seE=
+Received: by mta.mailer.atlassian.com id hg05ma2fmd4a for <KylinJiang@xxx.com>; Wed, 6 Mar 2019 18:02:43 +0000 (envelope-from <bounce-219880_HTML-1418687236-103981272-132689-380@bounce.mailer.atlassian.com>)
+From: "Atlassian" <noreply@mailer.atlassian.com>
+To: <KylinJiang@xxx.com>
+Subject: Product change notification: transitioning user groups
+Date: Wed, 06 Mar 2019 12:02:42 -0600
+MIME-Version: 1.0
+Reply-To: "Atlassian" <reply-fe2e1570766d0c7c771372-219880_HTML-1418687236-132689-380@mailer.atlassian.com>
+List-ID: <132689.xt.local>
+X-CSA-Complaints: whitelistcomplaints@eco.de
+x-job: 132689_103981272
+Message-ID: <f6f3ea44-eb0f-48cd-a3ea-133cb8d6f62d@ind1s01mta986.xt.local>
+Content-Type: multipart/alternative;
+	boundary="PtaU1W0TMMRK=_?:"
+
+This is a multi-part message in MIME format.
+
+--PtaU1W0TMMRK=_?:
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Atlassian 
+
+Hi there,
+
+As some of you have already noticed, a few weeks ago we stopped allowing account admins to reference groups across Bitbucket Cloud teams for security purposes.
+
+To further protect our teams, in a couple of days we will be removing any existing groups that were referenced across accounts. Don't panic! To make this transition as easy as possible, our team will be copying the original group (same users and permissions) so that you don’t have to. Any group that was previously referenced from another team will now appear as "group name forked from ABC".
+
+Going forward, these groups will not be synced and will have to be updated individually for each team. We realize this is a hassle, but hope that you can bear with us as we work towards a solution that meets both your privacy and business needs.
+
+Note, this change will not affect your billing.
+
+-The Bitbucket Cloud team
+
+---------------------------------------
+
+Read in browser - http://view.mailer.atlassian.com/?qs=1c719289ae2ab935d7153996b56d87cc543eb4292d7b9a5353d02c0784aaa9ce715d90badac1944c218d50ccea99eae4b727fbe03fd835f3c6bfd43639dfde69d32beb88b92590de8c571daa1f68fdeaa09a94fd22aceab7
+
+Privacy Policy - http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b2f7b79540d6df249b3d8b850253218d31800fa858e1770f584df02f709f985880f4b917f919ddfbe3ae62bb6e9763420 
+
+Contact us - http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b40338a5b76c10698086cb996a6e09a58cb2268291169424f68913216106f35ec9eb3e410bcd7376d0f7fa16058c68a9b 
+
+Read our Blog - http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b4704e0d25e187006a045fc7b258802a29e8630542dc24fd93c7e3f71734904b8e63061989e9d894bbb15d88a79814eaf 
+
+Follow on Twitter - http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6be41a89c680bfb1baff7700931ca73b2f5ec9130dcb5733860cfdb04ed231028ee3047c8b378749aa3babff5c2bdc4563
+
+Copyright 2019 Atlassian Pty Ltd. All rights reserved. We are located at 341 George Street, Sydney, NSW, 2000, Australia
+
+
+--PtaU1W0TMMRK=_?:
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:v="urn:schemas-microsoft-com:vml"
+      xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if !mso]><!-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!--<![endif]-->
+<title>Atlassian</title>
+<style type="text/css">
+/* RESET STYLES */
+table {border-collapse:collapse;}
+img, a img {border:0; height:auto; outline:none; text-decoration:none;}
+body {height:100% !important; margin:0 auto !important; padding:0; width:100% !important;}
+
+/* CLIENT-SPECIFIC STYLES */
+img {-ms-interpolation-mode: bicubic;} /* Force IE to smoothly render resized images. */
+#outlook a {padding:0;} /* Force Outlook 2007 and up to provide a "view in browser" message. */
+table {mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up. */
+.ReadMsgBody {width:100%;} .ExternalClass {width:100%;} /* Force Outlook.com to display emails at full width. */
+p, a, td {mso-line-height-rule:exactly;} /* Force Outlook to render line heights as they're originally set. */
+p, a, td, body, table {-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%;} /* Prevent Windows- and Webkit-based mobile platforms from changing declared text sizes. */
+.ExternalClass, .ExternalClass p, .ExternalClass td, .ExternalClass div, .ExternalClass span, .ExternalClass font {line-height:100%;} /* Force Outlook.com to display line heights normally. */
+a [x-apple-data-detectors] {color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important;} /* attempt to control apple deata detection */
+
+/* TEMPLATE STYLES */
+@media screen and (max-width:480px){
+.mw100{max-width:100% !important;}
+.mw95{max-width:95% !important;}
+.mw50{max-width:50% !important;}
+.w100{width:100% !important;}
+.w96{width:96% !important;}
+.mblpdrm-r{padding-right:0 !important;}
+.mblpdrm-l{padding-left:0 !important;}
+.hide {display:none !important;}
+}
+</style>
+ <!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+  <o:PixelsPerInch>96</o:PixelsPerInch>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+</head>
+<body style="margin:0;padding:0;background-color:#ffffff;"><style type="text/css">
+div.preheader 
+{ display: none !important; } 
+</style>
+<div class="preheader" style="font-size: 1px; display: none !important;">Referenced groups will no longer be synced across teams</div>
+<table align="center" cellpadding="0" cellspacing="0" border="0" style="width:100%;Margin:0 auto;background-color:#ffffff;">
+ <tr>
+  <td style="font-size:0;">&nbsp;</td>
+  <td align="center" valign="top" style="width:580px;">
+   <!--ALL CONTENT STARTS HERE-->
+   <!--table removes gmail bg line between stacked tables-->
+   <table align="center" cellpadding="0" cellspacing="0" border="0" style="width:100%;" class="w96">
+    <tr>
+     <td align="center">
+      <!--header 1 atlassian logo center align-->
+      <table align="center" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+       <tr>
+        <td align="left" style="padding:40px 0;border-bottom:1px solid #cccccc;">
+         <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6bc2d34f7ef91528c78912082aa5b0c55d8b772564477ff28bc79cc3b589c61e6dabde2eaa3706f36bdbbcffc04baaee38"  alt="Atlassian" style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;text-decoration:none;">
+          <img src="http://image.mailer.atlassian.com/lib/fec2157377620c74/m/7/Atlassian-logo-rebrand-main.png" alt="Atlassian" title="Atlassian" border="0" width="220" style="display:block;outline:0;padding:0;border:0;width:220px;height:auto;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;" /></a>
+        </td>
+       </tr>
+       <tr>
+        <td height="20" style="height:20px;line-height:20px;font-size:0;">
+         &nbsp;
+        </td>
+       </tr>
+      </table><!--/header 1 atlassian logo center align-->
+     </td>
+    </tr>
+    <tr>
+     <td align="center">
+      <!--primary 1-->
+      <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+       <tr>
+        <td style="padding-top:20px;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;line-height:22px;color:#42526E;text-align:left;">
+         Hi there,
+        </td>
+       </tr>
+       <tr>
+        <td style="padding-top:20px;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;line-height:22px;color:#42526E;text-align:left;">
+         As some of you have already noticed, a few weeks ago we stopped allowing account admins to reference groups across Bitbucket Cloud teams for security purposes.
+        </td>
+       </tr>
+       <tr>
+        <td style="padding-top:20px;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;line-height:22px;color:#42526E;text-align:left;">
+         To further protect our teams, in a couple of days we will be removing any existing groups that were referenced across accounts. Don't panic! To make this transition as easy as possible, our team will be copying the original group (same users and permissions) so that you don’t have to. Any group that was previously referenced from another team will now appear as "group name forked from ABC".
+        </td>
+       </tr>
+       <tr>
+        <td style="padding-top:20px;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;line-height:22px;color:#42526E;text-align:left;">
+         Going forward, these groups will not be synced and will have to be updated individually for each team. We realize this is a hassle, but hope that you can bear with us as we work towards a solution that meets both your privacy and business needs.
+        </td>
+       </tr>
+       <tr>
+        <td style="padding-top:20px;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;line-height:22px;color:#42526E;text-align:left;">
+         Note, this change will not affect your billing.
+        </td>
+       </tr>
+       <tr>
+        <td style="padding-top:20px;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;line-height:22px;color:#42526E;text-align:left;">
+         -The Bitbucket Cloud team
+        </td>
+       </tr>
+      </table><!--/primary 1-->
+     </td>
+    </tr>
+    <tr>
+     <td align="center">
+      <!--footer a-->
+      <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+       <tr>
+        <td align="center" style="padding-top:40px;padding-bottom:40px;">
+         <!--headline table controls length-->
+         <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+          <tr>
+           <td style="border-top:1px solid #cccccc;padding-top:40px;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;line-height:19px;color:#707070;text-align:center;">
+            <a href="http://view.mailer.atlassian.com/?qs=1c719289ae2ab935d7153996b56d87cc543eb4292d7b9a5353d02c0784aaa9ce715d90badac1944c218d50ccea99eae4b727fbe03fd835f3c6bfd43639dfde69d32beb88b92590deb217cf9deea40b2941b43f2943660426"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;color:#707070;text-decoration:none;">Read in browser</a> &bull; 
+            <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b81857fabec37234e0afc9abee62e4478903b9f8868ce125bf6f509339ae8737164166c369f47921edad75b45aae7d3d8"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;color:#707070;text-decoration:none;">Privacy policy</a> &bull;
+            <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b9165aba2388a4f1a5cc4f160ea0e42599dd859c571e21404616f77a34795bbb61d3ee18f9ee7a9bcaaa9e5038007dd8a"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;color:#707070;text-decoration:none;">Contact us</a> &bull;
+            <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6bec503e08d60581ba31086456a31e20058e011a5f5c796c61f88fb5a9ba43b29f6e3d5325ea91c07b04fad3949ba93e32"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;color:#707070;text-decoration:none;">Read our blog</a>
+           </td>
+          </tr>
+          <tr>
+           <td align="center" style="padding-top:10px; display:block;">
+            <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b0d9c2364379b2a85f593f07b3500466f6acfba442e3983e37ba470c837a6e897650bf926a8b43c503f2c52a5776f10ca"  alt="Facebook" style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;text-decoration:none;">
+            <img src="http://image.mailer.atlassian.com/lib/fec2157377620c74/m/8/Facebookx2.png" alt="Facebook" align="center" title="Facebook" border="0" width="25" style="line-height: 0px; outline:0;padding:0;border:0;width:25px;height:auto;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;" /></a>  &nbsp; 
+
+            <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b6c0ee2a517bfdd1de5be998798230b64bbbadb3000786cb0fa29cbbd890b86335bdd8376bda956063eb85252126bbcb5"  alt="LinkedIn" style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;text-decoration:none;">
+            <img src="http://image.mailer.atlassian.com/lib/fec2157377620c74/m/8/LinkedInx2.png" alt="LinkedIn" align="center" title="LinkedIn" border="0" width="25" style="outline:0;padding:0;border:0;width:25px;height:auto;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;" /></a> &nbsp; 
+
+            <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6bb56fa29966fec770c2c52c623cf58b2494aa46f23c6e80d6cda4f1c9637e48ca8ba61ddffa990e763512ffb4a246dbd8"  alt="Twitter" style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;text-decoration:none;">
+            <img src="http://image.mailer.atlassian.com/lib/fec2157377620c74/m/8/Twitterx2.png" alt="Twitter" align="center" title="Twitter" border="0" width="25" style="outline:0;padding:0;border:0;width:25px;height:auto;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;" /></a>
+           </td>
+          </tr>
+          <tr>
+           <td align="center" style="padding-top:10px;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;line-height:19px;color:#707070;text-align:center;">
+            Copyright 2019 Atlassian Pty Ltd. All rights reserved. We are located at 341 George Street, Sydney, NSW, 2000, Australia
+           </td>
+          </tr>
+          <tr>
+           <td align="center" style="padding-top:20px;">
+            <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b7c93eb74f4cfdb30b09a934e1e769d978f7bfe991792e6f4e9b9a07aacd159ebce7ce93913bcf0defb4a2e463b5518b7"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;text-decoration:none;"><img src="http://image.mailer.atlassian.com/lib/fec2157377620c74/m/7/Atlassian-logo-rebrand-main.png" width="116" border="0" alt="" title="" style="display:block;outline:0;padding:0;border:0;width:116px;height:auto;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:16px;color:#205081;" /><img src="http://click.mailer.atlassian.com/open.aspx?ffcb10-fe2e1570766d0c7c771372-fdcd15737164057b7d17747467-fec2157377620c74-fec316717c6c0c7d-fdf11574746c027572167373-ff64177875&d=10088" width="1" height="1"></a>
+           </td>
+          </tr>
+         </table><!--/headline table controls length-->
+        </td>
+       </tr>
+      </table><!--/footer a-->
+     </td>
+    </tr>
+   </table><!--/table removes gmail bg line between stacked tables-->
+   <!--/ALL CONTENT ENDS HERE-->
+  </td>
+  <td style="font-size:0;">&nbsp;</td>
+ </tr>
+</table>
+</body>
+</html>
+
+--PtaU1W0TMMRK=_?:--
+
