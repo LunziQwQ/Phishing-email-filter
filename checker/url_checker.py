@@ -1,4 +1,4 @@
-from checker.sogou_rank_query import get_sogou_rank
+from utils.sogou_rank_query import get_sogou_rank
 
 
 class UrlChecker:
@@ -8,7 +8,7 @@ class UrlChecker:
         return False
 
     @staticmethod
-    def too_long(url):
+    def netloc_too_long(url):
         # TODO
         return False
 
