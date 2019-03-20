@@ -1,16 +1,18 @@
 from utils.sogou_rank_query import get_sogou_rank
+import urllib3
+import re
+
+ip_regex = r'(?:[0-9]{1,3}\.){3}[0-9]{1,3}'
 
 
 class UrlChecker:
     @staticmethod
     def have_ip(url):
-        # TODO
-        return False
+        return len(re.findall(ip_regex, url)) > 0
 
     @staticmethod
     def netloc_too_long(url):
-        # TODO
-        return False
+        return len(urllib3.util.parse_url(url).netloc) > 24
 
     @staticmethod
     def low_pr(url):
