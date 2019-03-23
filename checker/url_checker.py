@@ -19,3 +19,11 @@ class UrlChecker:
         if get_sogou_rank(url) < 3:
             return True
         return False
+
+    @staticmethod
+    def in_phish_tank(url, db):
+        return db.is_phish_url(url)
+
+    @staticmethod
+    def have_unusual_char(url, db):
+        return db.have_unusual(url)
