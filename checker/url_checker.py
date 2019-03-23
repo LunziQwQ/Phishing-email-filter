@@ -1,6 +1,9 @@
-from utils.sogou_rank_query import get_sogou_rank
+import datetime
 import urllib3
 import re
+
+from utils.sogou_rank_query import get_sogou_rank
+from utils.whois_query import get_create_time
 
 ip_regex = r'(?:[0-9]{1,3}\.){3}[0-9]{1,3}'
 
@@ -27,3 +30,11 @@ class UrlChecker:
     @staticmethod
     def have_unusual_char(url, db):
         return db.have_unusual(url)
+
+    @staticmethod
+    def create_less_3_month(url):
+        create_time = get_create_time(url)
+        if create_time is None:
+            return False
+        else:
+            return (datetime.datetime.now() - create_time).days < 90
