@@ -24,7 +24,8 @@ class Checker(object):
                 "netloc_too_long": 0,
                 "low_pr": 0,
                 "have_unusual": 0,
-                "in_phish_tank": 0
+                "in_phish_tank": 0,
+                "create_less_3_month": 0
             }
         }
 
@@ -53,5 +54,9 @@ class Checker(object):
                 # 检查PageRank过低
                 if UrlChecker.low_pr(link):
                     result["url"]["low_pr"] += 1
+
+                # 检查创建时间是否少于3个月
+                if UrlChecker.create_less_3_month(link):
+                    result["url"]["create_less_3_month"] += 1
 
         return result
