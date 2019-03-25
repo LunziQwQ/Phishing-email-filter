@@ -13,6 +13,7 @@ def get_create_time(url):
 
     conn.request("GET", query_url)
     info = json.loads(conn.getresponse().read())
+    conn.close()
     if info["status"] != '0':
         return None
     else:
