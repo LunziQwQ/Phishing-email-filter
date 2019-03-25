@@ -46,9 +46,10 @@ class EmailInfo:
                         f.write(file_data)
                     self.files.append(save_path)
 
-        self.links = self.get_links()
+        self.a_tags = self.get_a_tags()
+        self.urls = [a_tag[0] for a_tag in self.a_tags]
 
-    def get_links(self):
+    def get_a_tags(self):
         """
         通过正则表达式，匹配所有html块里的a标签内容
         :return: 元组列表 -> (url, 描述文字)
