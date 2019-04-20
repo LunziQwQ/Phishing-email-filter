@@ -13,7 +13,8 @@ full_check_list = ["have_ip",
                    "low_pr",
                    "have_unusual",
                    "in_phish_tank",
-                   "create_less_3_month"]
+                   "create_less_3_month",
+                   "have_redirect"]
 
 
 class UrlChecker:
@@ -30,7 +31,8 @@ class UrlChecker:
                 "low_pr": 0,
                 "have_unusual": 0,
                 "in_phish_tank": 0,
-                "create_less_3_month": 0
+                "create_less_3_month": 0,
+                "redirect": 0
             }
         }
         self.check_list = check_list
@@ -71,6 +73,10 @@ class UrlChecker:
     @staticmethod
     def netloc_too_long(url):
         return len(urllib3.util.parse_url(url).netloc) > 30
+
+    @staticmethod
+    def have_redirect(url):
+        return "&redirect" in url.lower()
 
     @staticmethod
     def low_pr(url):
