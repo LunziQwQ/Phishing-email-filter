@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>771</width>
-    <height>425</height>
+    <width>804</width>
+    <height>742</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QProgressBar" name="progressBar">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>160</x>
      <y>20</y>
-     <width>611</width>
+     <width>621</width>
      <height>21</height>
     </rect>
    </property>
@@ -29,7 +29,7 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>20</y>
      <width>121</width>
      <height>16</height>
@@ -42,10 +42,10 @@
   <widget class="QTableWidget" name="tableWidget_2">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>60</y>
-     <width>751</width>
-     <height>351</height>
+     <width>761</width>
+     <height>201</height>
     </rect>
    </property>
    <column>
@@ -83,6 +83,29 @@
      <string>报告详情</string>
     </property>
    </column>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>300</y>
+     <width>761</width>
+     <height>411</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>270</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>实时结果反馈：</string>
+   </property>
   </widget>
  </widget>
  <resources/>
