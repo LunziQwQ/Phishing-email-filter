@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>645</width>
-    <height>396</height>
+    <width>771</width>
+    <height>425</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>150</x>
      <y>20</y>
-     <width>491</width>
+     <width>611</width>
      <height>21</height>
     </rect>
    </property>
@@ -43,16 +43,10 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>50</y>
-     <width>621</width>
-     <height>331</height>
+     <y>60</y>
+     <width>751</width>
+     <height>351</height>
     </rect>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>621</width>
-     <height>16777215</height>
-    </size>
    </property>
    <column>
     <property name="text">
@@ -82,6 +76,11 @@
    <column>
     <property name="text">
      <string>检测状态</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>报告详情</string>
     </property>
    </column>
   </widget>
