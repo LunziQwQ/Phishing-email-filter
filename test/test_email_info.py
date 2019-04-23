@@ -6,4 +6,4 @@ class TestEmailInfo(TestCase):
     def test_get_links(self):
         eml_file = "test.eml"
         info = EmlReader(eml_file).read()
-        self.assertEqual(len(info.get_links()), 4)
+        self.assertEqual(len(info.get_a_tags()), 4)
