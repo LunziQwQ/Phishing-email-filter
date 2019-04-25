@@ -10,5 +10,6 @@ def get_sogou_rank(url):
     query_url = api_url + parse_result.scheme + "://" + parse_result.netloc + "/"
 
     conn.request("GET", query_url)
-    resp = conn.getresponse()
-    return int(resp.read()[10:11])
+    result = conn.getresponse().read()
+    conn.close()
+    return int(result[10:11])

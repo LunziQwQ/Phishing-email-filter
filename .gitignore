@@ -4,3 +4,7 @@
 
 ### OS generated
 #/.DS_Store
+
+### test data
+test/phish_urls.json
+test/unusual_char

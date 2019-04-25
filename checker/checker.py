@@ -2,32 +2,20 @@ from checker.url_checker import UrlChecker
 from utils.system_info import is_connected
 
 
-def check(email_info):
-    result = {
-        "url": {
-            "count": len(email_info.links),
-            "have_ip": 0,
-            "netloc_too_long": 0,
-            "low_pr": 0
-        }
-    }
+class Checker(object):
 
-    # check url
-    for link in email_info.links:
+    def __init__(self):
+        self.phish_tank_db = None
+        self.unusual_db = None
 
-        # 检查链接中包含IP
-        if UrlChecker.have_ip(link):
-            result["url"]["have_ip"] += 1
+    def check(self, email_info, check_list):
+        is_online = is_connected()
+        checkers = [
+            UrlChecker(email_info, check_list, is_online),
+        ]
+        result = {}
 
-        # 检查链接主域名过长
-        if UrlChecker.netloc_too_long(link):
-            result["url"]["netloc_too_long"] += 1
+        for checker in checkers:
+            result.update(checker.check())
 
-        # 依赖网络接口的检查
-        if is_connected():
-
-            # 检查PageRank过低
-            if UrlChecker.low_pr(link):
-                result["url"]["low_pr"] += 1
-
-    return result
+        return result
