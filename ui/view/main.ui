@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1194</width>
-    <height>800</height>
+    <width>1039</width>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,59 +22,52 @@
     <property name="geometry">
      <rect>
       <x>800</x>
-      <y>400</y>
+      <y>500</y>
       <width>231</width>
-      <height>41</height>
+      <height>81</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>Test Begin</string>
+     <string>Start</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
       <x>800</x>
-      <y>280</y>
+      <y>320</y>
       <width>231</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
     <property name="text">
-     <string>mail Import</string>
+     <string>Mail Import</string>
     </property>
-   </widget>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>781</width>
-      <height>491</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>779</width>
-       <height>489</height>
-      </rect>
-     </property>
-    </widget>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>810</x>
-      <y>210</y>
+      <y>250</y>
       <width>121</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
     </property>
     <property name="text">
      <string>Time Required:</string>
@@ -84,10 +77,15 @@
     <property name="geometry">
      <rect>
       <x>800</x>
-      <y>340</y>
+      <y>380</y>
       <width>231</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
     </property>
     <property name="text">
      <string>Network Status Detection</string>
@@ -97,10 +95,15 @@
     <property name="geometry">
      <rect>
       <x>940</x>
-      <y>220</y>
+      <y>260</y>
       <width>72</width>
       <height>15</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
     </property>
     <property name="text">
      <string>TextLabel</string>
@@ -110,10 +113,15 @@
     <property name="geometry">
      <rect>
       <x>800</x>
-      <y>240</y>
+      <y>280</y>
       <width>131</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
     </property>
     <property name="text">
      <string> Network Status:</string>
@@ -123,10 +131,15 @@
     <property name="geometry">
      <rect>
       <x>800</x>
-      <y>460</y>
+      <y>440</y>
       <width>231</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
     </property>
     <property name="text">
      <string>Update</string>
@@ -136,10 +149,15 @@
     <property name="geometry">
      <rect>
       <x>940</x>
-      <y>250</y>
+      <y>290</y>
       <width>72</width>
       <height>15</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
     </property>
     <property name="text">
      <string>TextLabel</string>
@@ -151,8 +169,13 @@
       <x>800</x>
       <y>10</y>
       <width>231</width>
-      <height>191</height>
+      <height>231</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
     </property>
     <property name="widgetResizable">
      <bool>true</bool>
@@ -163,7 +186,7 @@
        <x>0</x>
        <y>0</y>
        <width>229</width>
-       <height>189</height>
+       <height>229</height>
       </rect>
      </property>
      <widget class="QCheckBox" name="checkBox_3">
@@ -175,6 +198,11 @@
         <height>16</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+       </font>
+      </property>
       <property name="text">
        <string>Plain Detect</string>
       </property>
@@ -184,12 +212,17 @@
        <rect>
         <x>10</x>
         <y>80</y>
-        <width>111</width>
+        <width>151</width>
         <height>21</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+       </font>
+      </property>
       <property name="text">
-       <string>URL Detect</string>
+       <string>URL Basic Detect</string>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_2">
@@ -200,6 +233,11 @@
         <width>111</width>
         <height>19</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+       </font>
       </property>
       <property name="text">
        <string>HTML Detect</string>
@@ -214,6 +252,11 @@
         <height>16</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+       </font>
+      </property>
       <property name="text">
        <string>Test Item:</string>
       </property>
@@ -227,30 +270,77 @@
         <height>16</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+       </font>
+      </property>
       <property name="text">
        <string>Accessory Detect</string>
       </property>
      </widget>
+     <widget class="QCheckBox" name="checkBox_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>190</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>URL Advance Detect</string>
+      </property>
+     </widget>
     </widget>
    </widget>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1194</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>文件</string>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>781</width>
+      <height>571</height>
+     </rect>
     </property>
-    <addaction name="open_eml"/>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>193</number>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Subject</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Sender</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Receiver</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Date</string>
+     </property>
+    </column>
    </widget>
-   <addaction name="menuFile"/>
   </widget>
   <action name="open_eml">
    <property name="text">
