@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1039</width>
-    <height>589</height>
+    <width>1238</width>
+    <height>594</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,10 +18,10 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="start_btn">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>990</x>
       <y>500</y>
       <width>231</width>
       <height>81</height>
@@ -37,10 +37,10 @@
      <string>Start</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="import_btn">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>990</x>
       <y>320</y>
       <width>231</width>
       <height>41</height>
@@ -55,10 +55,10 @@
      <string>Mail Import</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="_time">
     <property name="geometry">
      <rect>
-      <x>810</x>
+      <x>1000</x>
       <y>250</y>
       <width>121</width>
       <height>31</height>
@@ -70,13 +70,13 @@
      </font>
     </property>
     <property name="text">
-     <string>Time Required:</string>
+     <string>Time Required：</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="check_net_btn">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>990</x>
       <y>380</y>
       <width>231</width>
       <height>41</height>
@@ -91,10 +91,10 @@
      <string>Network Status Detection</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="time_required_label">
     <property name="geometry">
      <rect>
-      <x>940</x>
+      <x>1140</x>
       <y>260</y>
       <width>72</width>
       <height>15</height>
@@ -106,13 +106,13 @@
      </font>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>0s</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="_net">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>1000</x>
       <y>280</y>
       <width>131</width>
       <height>31</height>
@@ -124,13 +124,13 @@
      </font>
     </property>
     <property name="text">
-     <string> Network Status:</string>
+     <string>Network Status：</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="update_btn">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>990</x>
       <y>440</y>
       <width>231</width>
       <height>41</height>
@@ -145,10 +145,10 @@
      <string>Update</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="network_status_label">
     <property name="geometry">
      <rect>
-      <x>940</x>
+      <x>1130</x>
       <y>290</y>
       <width>72</width>
       <height>15</height>
@@ -160,13 +160,13 @@
      </font>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea_2">
+   <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>990</x>
       <y>10</y>
       <width>231</width>
       <height>231</height>
@@ -189,7 +189,7 @@
        <height>229</height>
       </rect>
      </property>
-     <widget class="QCheckBox" name="checkBox_3">
+     <widget class="QCheckBox" name="plain_cb">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -207,7 +207,7 @@
        <string>Plain Detect</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QCheckBox" name="url_basic_cb">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -225,7 +225,7 @@
        <string>URL Basic Detect</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_2">
+     <widget class="QCheckBox" name="html_cb">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -261,7 +261,7 @@
        <string>Test Item:</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_4">
+     <widget class="QCheckBox" name="accessory_cb">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -279,7 +279,7 @@
        <string>Accessory Detect</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_5">
+     <widget class="QCheckBox" name="url_adv_cb">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -299,12 +299,12 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="email_list_table">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>781</width>
+      <width>971</width>
       <height>571</height>
      </rect>
     </property>
@@ -315,11 +315,19 @@
      </sizepolicy>
     </property>
     <attribute name="horizontalHeaderCascadingSectionResizes">
-     <bool>false</bool>
+     <bool>true</bool>
     </attribute>
     <attribute name="horizontalHeaderDefaultSectionSize">
      <number>193</number>
     </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string/>
+     </property>
+    </column>
     <column>
      <property name="text">
       <string>Subject</string>
