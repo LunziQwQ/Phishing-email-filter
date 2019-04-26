@@ -6,6 +6,12 @@ full_check_list = [
     "inducible_comment"
 ]
 
+check_time = {
+    "abnormal_time": 0.01,
+    "inducible_title": 0.01,
+    "inducible_comment": 0.0001
+}
+
 
 class CommonChecker:
     inducible_db = None
@@ -31,6 +37,13 @@ class CommonChecker:
             self.check_result["common"]["inducible_comment"] += CommonChecker.inducible_comment(self.eml_info)
 
         return self.check_result
+
+    def detect_time(self):
+        time = check_time["abnormal_time"] + check_time["inducible_title"]
+        for pb in self.eml_info.plain_block:
+            if "inducible_comment" in self.check_list:
+                time += len(pb) * check_time["inducible_comment"]
+        return time
 
     @classmethod
     def init_inducible_db(cls):

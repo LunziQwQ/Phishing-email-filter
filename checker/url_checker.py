@@ -18,6 +18,16 @@ full_check_list = [
     "have_redirect"
 ]
 
+check_time = {
+    "have_ip": 0.02,
+    "netloc_too_long": 0.02,
+    "low_pr": 1.5,
+    "have_unusual": 0.02,
+    "in_phish_tank": 0.5,
+    "create_less_3_month": 1.7,
+    "have_redirect": 0.02
+}
+
 
 class UrlChecker:
     phish_tank_db = None
@@ -60,13 +70,23 @@ class UrlChecker:
 
         return self.check_result
 
+    def detect_time(self):
+        time = 0.0
+        url_count = len(self.eml_info.urls)
+        for ct in check_time:
+            if ct in self.check_list:
+                time += url_count * check_time[ct]
+        return time
+
     @classmethod
     def init_phish_tank_db(cls):
-        cls.phish_tank_db = PhishTankDB()
+        if not cls.phish_tank_db:
+            cls.phish_tank_db = PhishTankDB()
 
     @classmethod
     def init_unusual_db(cls):
-        cls.unusual_db = UnusualCharDB()
+        if not cls.unusual_db:
+            cls.unusual_db = UnusualCharDB()
 
     @staticmethod
     def have_ip(url):
@@ -88,15 +108,12 @@ class UrlChecker:
 
     @classmethod
     def in_phish_tank(cls, url):
-        if not cls.phish_tank_db:
-            cls.init_phish_tank_db()
-
+        cls.init_phish_tank_db()
         return cls.phish_tank_db.is_phish_url(url)
 
     @classmethod
     def have_unusual_char(cls, url):
-        if not cls.unusual_db:
-            cls.init_unusual_db()
+        cls.init_unusual_db()
         return cls.unusual_db.have_unusual(url)
 
     @staticmethod

@@ -2,6 +2,10 @@ full_check_list = [
     "have_script",
 ]
 
+check_time = {
+    "have_script": 0.5
+}
+
 
 class HtmlChecker:
 
@@ -21,6 +25,14 @@ class HtmlChecker:
             if "have_script" in self.check_list:
                 self.check_result["html"]["have_script"] += 1 if HtmlChecker.have_script(html_block) else 0
         return self.check_result
+
+    def detect_time(self):
+        time = 0.0
+        html_count = len(self.eml_info.html_block)
+        for ct in check_time:
+            if ct in self.check_list:
+                time += html_count * check_time[ct]
+        return time
 
     @staticmethod
     def have_script(html):
