@@ -30,7 +30,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         self.html_cb.stateChanged.connect(self.test_item_changed)
         self.accessory_cb.stateChanged.connect(self.test_item_changed)
 
-        self.email_list_table.itemClicked.connect(self.update_detect_time_label())
+        self.email_list_table.itemClicked.connect(self.update_detect_time_label)
 
         # save args
         self.email_info_list = {}
@@ -60,7 +60,6 @@ class MainController(QMainWindow, Ui_MainWindow):
             self.email_list_table.setItem(now_row, 3, QTableWidgetItem(info.receiver))
             self.email_list_table.setItem(now_row, 4, QTableWidgetItem(time.asctime(info.date)))
 
-            self.check_email_count += 1
             self.update_detect_time_label()
 
     def update_detect_time_label(self):
@@ -69,7 +68,7 @@ class MainController(QMainWindow, Ui_MainWindow):
             if item["check_box"].checkState() == Qt.Checked:
                 checker = item["checker"]
                 t += checker.detect_time(self.check_list)
-        self.time_required_label.setText(str(t)[:7] + "s")
+        self.time_required_label.setText("%.2fs" % t)
 
     def test_item_changed(self):
         self.check_list = []

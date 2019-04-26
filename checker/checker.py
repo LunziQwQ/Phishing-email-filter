@@ -19,7 +19,7 @@ class Checker(object):
         time = 0.0
 
         for checker in self.checkers:
-            time += checker.detect_time()
+            time += checker.detect_time(checker_list)
 
         return time
 
@@ -27,6 +27,6 @@ class Checker(object):
         result = {}
 
         for checker in self.checkers:
-            result.update(checker.check())
+            result.update(checker.check(checker_list))
 
         return result
