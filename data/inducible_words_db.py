@@ -4,7 +4,7 @@ import json
 class InducibleWordsDB:
 
     def __init__(self):
-        with open("data/inducible_words.json", "r") as f:
+        with open("data/inducible_words.json", "r", encoding="utf-8") as f:
             self.datas = json.load(f)
 
     def inducible_words(self, content, is_html=False):

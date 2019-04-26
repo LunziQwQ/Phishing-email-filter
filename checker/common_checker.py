@@ -33,7 +33,7 @@ class CommonChecker:
             self.check_result["common"]["abnormal_time"] += CommonChecker.is_abnormal_time(self.eml_info)
         if "inducible_title" in check_list:
             self.check_result["common"]["inducible_title"] += CommonChecker.inducible_title(self.eml_info)
-        if "inducible_comment" in check_list:
+        if "inducible_content" in check_list:
             self.check_result["common"]["inducible_comment"] += CommonChecker.inducible_comment(self.eml_info)
 
         return self.check_result

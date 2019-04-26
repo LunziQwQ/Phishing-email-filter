@@ -31,11 +31,11 @@ class EmailInfo:
                 try:
                     # 保存html类型的内容块
                     if block.get_content_type() == "text/html":
-                        self.html_block.append(block.get_payload(decode=True).strip().decode())
+                        self.html_block.append(block.get_payload(decode=True).strip().decode(block.get_content_charset()))
 
                     # 保存plain文本的内容块
                     if block.get_content_type() == "text/plain":
-                        self.plain_block.append(block.get_payload(decode=True).strip().decode())
+                        self.plain_block.append(block.get_payload(decode=True).strip().decode(block.get_content_charset()))
                 except UnicodeDecodeError:
                     # 适应中文编码
                     if block.get_content_type() == "text/html":

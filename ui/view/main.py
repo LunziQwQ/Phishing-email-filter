@@ -41,7 +41,7 @@ class Ui_MainWindow(object):
         self.check_net_btn.setFont(font)
         self.check_net_btn.setObjectName("check_net_btn")
         self.time_required_label = QtWidgets.QLabel(self.centralwidget)
-        self.time_required_label.setGeometry(QtCore.QRect(1140, 260, 72, 15))
+        self.time_required_label.setGeometry(QtCore.QRect(1120, 260, 72, 15))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         self.time_required_label.setFont(font)

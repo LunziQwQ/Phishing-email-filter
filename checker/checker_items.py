@@ -14,7 +14,7 @@ html = {
 }
 plain = {
     "abnormal_time",
-    "inducible_title"
+    "inducible_title",
     "inducible_content"
 }
 accessory = {
