@@ -22,7 +22,8 @@ class CommonChecker:
             "common": {
                 "count": len(self.eml_info.html_block),
                 "abnormal_time": 0,
-                "inducible_title": 0
+                "inducible_title": 0,
+                "inducible_comment": 0
             }
         }
         self.is_connected = is_connected

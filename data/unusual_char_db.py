@@ -1,7 +1,7 @@
 class UnusualCharDB:
 
     def __init__(self):
-        with open("unusual_char", "r") as f:
+        with open("data/unusual_char", "r",encoding="utf-8") as f:
             self.datas = f.read()
 
     def have_unusual(self, url):
