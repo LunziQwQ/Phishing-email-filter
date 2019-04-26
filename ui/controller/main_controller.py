@@ -1,8 +1,12 @@
-from PyQt5.QtCore import QFile
-from PyQt5.QtWidgets import QMainWindow, QFileDialog
+import time
 
+from PyQt5.QtCore import QFile, QSize, Qt
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView, QCheckBox
+
+from checker.checker import Checker
 from reader.eml_reader import EmlReader
 from ui.view.main import Ui_MainWindow
+from utils.system_info import is_connected
 
 
 class MainController(QMainWindow, Ui_MainWindow):
@@ -11,9 +15,28 @@ class MainController(QMainWindow, Ui_MainWindow):
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
 
-        self.open_eml.triggered.connect(self.read_eml)
+        # set table prop
+        self.email_list_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.email_list_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
 
-    def read_eml(self):
+        # bind sign
+        self.import_btn.clicked.connect(self.import_btn_on_click)
+        self.check_net_btn.clicked.connect(self.check_net_on_click)
+
+        self.url_adv_cb.stateChanged.connect(self.test_item_changed)
+        self.url_basic_cb.stateChanged.connect(self.test_item_changed)
+        self.plain_cb.stateChanged.connect(self.test_item_changed)
+        self.html_cb.stateChanged.connect(self.test_item_changed)
+        self.accessory_cb.stateChanged.connect(self.test_item_changed)
+
+        self.email_list_table.itemClicked.connect(self.email_check_changed)
+
+        # save args
+        self.email_info_list = {}
+        self.detect_time = 0
+        self.check_email_count = 0
+
+    def import_btn_on_click(self):
         fname = QFileDialog.getOpenFileName(self, "Open File", "./", "Eml (*.eml)")
         # 打开文件 返回一个字符串第一个是路径， 第二个是要打开文件的类型
         # 如果用户主动关闭文件对话框，则返回值为空
@@ -22,4 +45,54 @@ class MainController(QMainWindow, Ui_MainWindow):
             # open()会自动返回一个文件对象
             reader = EmlReader(fname[0])
             info = reader.read()
-            self.textEdit.setText(info.__str__())
+            now_row = self.email_list_table.rowCount()
+            self.email_list_table.setRowCount(now_row + 1)
+
+            cb = QTableWidgetItem()
+            cb.setCheckState(Qt.Checked)
+
+            self.email_list_table.setItem(now_row, 0, cb)
+
+            self.email_info_list[str(now_row)] = {"info": info, "check_box": cb}
+
+            self.email_list_table.setItem(now_row, 1, QTableWidgetItem(info.subject))
+            self.email_list_table.setItem(now_row, 2, QTableWidgetItem(info.sender))
+            self.email_list_table.setItem(now_row, 3, QTableWidgetItem(info.receiver))
+            self.email_list_table.setItem(now_row, 4, QTableWidgetItem(time.asctime(info.date)))
+
+            self.check_email_count += 1
+            self.update_detect_time_label()
+
+    def email_check_changed(self):
+        self.check_email_count = 0
+        for item in self.email_info_list.values():
+            if item["check_box"].checkState() == Qt.Checked:
+                self.check_email_count += 1
+        self.update_detect_time_label()
+
+    def update_detect_time_label(self):
+        self.time_required_label.setText(str(self.detect_time * self.check_email_count) + "s")
+
+    def test_item_changed(self):
+        self.detect_time = 0
+        if self.plain_cb.checkState() == Qt.Checked:
+            self.detect_time += Checker.detect_time["plain"]
+        if self.html_cb.checkState() == Qt.Checked:
+            self.detect_time += Checker.detect_time["html"]
+        if self.accessory_cb.checkState() == Qt.Checked:
+            self.detect_time += Checker.detect_time["accessory"]
+        if self.url_basic_cb.checkState() == Qt.Checked:
+            self.detect_time += Checker.detect_time["url_basic"]
+        if self.url_adv_cb.checkState() == Qt.Checked:
+            self.detect_time += Checker.detect_time["url_advance"]
+        self.update_detect_time_label()
+
+    def check_net_on_click(self):
+        if is_connected():
+            self.network_status_label.setText("success")
+            self.network_status_label.setStyleSheet(
+                "color:rgb(28,206,8,255);")
+        else:
+            self.network_status_label.setText("failed")
+            self.network_status_label.setStyleSheet(
+                "color:rgb(200,17,17,255);")
