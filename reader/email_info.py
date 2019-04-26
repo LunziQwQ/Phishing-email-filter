@@ -26,13 +26,22 @@ class EmailInfo:
         if eml.is_multipart():
             for block in eml.walk():
 
-                # 保存html类型的内容块
-                if block.get_content_type() == "text/html":
-                    self.html_block.append(block.get_payload(decode=True).decode())
+                try:
+                    # 保存html类型的内容块
+                    if block.get_content_type() == "text/html":
+                        self.html_block.append(block.get_payload(decode=True).strip().decode())
 
-                # 保存plain文本的内容块
-                if block.get_content_type() == "text/plain":
-                    self.plain_block.append(block.get_payload(decode=True).decode())
+                    # 保存plain文本的内容块
+                    if block.get_content_type() == "text/plain":
+                        self.plain_block.append(block.get_payload(decode=True).strip().decode())
+                except UnicodeDecodeError:
+                    # 适应中文编码
+                    if block.get_content_type() == "text/html":
+                        self.html_block.append(block.get_payload(decode=True).strip().decode("gbk"))
+
+                    # 适应中文编码
+                    if block.get_content_type() == "text/plain":
+                        self.plain_block.append(block.get_payload(decode=True).strip().decode("gbk"))
 
                 # 保存附件到/tmp/pef/pef_files
                 if block.get_filename():
