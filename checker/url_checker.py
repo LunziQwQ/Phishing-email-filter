@@ -33,7 +33,7 @@ class UrlChecker:
     phish_tank_db = None
     unusual_db = None
 
-    def __init__(self, eml_info, check_list, is_connected):
+    def __init__(self, eml_info, is_connected):
         self.eml_info = eml_info
         self.check_result = {
             "url": {
@@ -47,34 +47,33 @@ class UrlChecker:
                 "redirect": 0
             }
         }
-        self.check_list = check_list
         self.is_connected = is_connected
 
-    def check(self):
+    def check(self, check_list):
         for url in self.eml_info.urls:
-            if "have_ip" in self.check_list:
+            if "have_ip" in check_list:
                 self.check_result["url"]["have_ip"] += 1 if UrlChecker.have_ip(url) else 0
-            if "netloc_too_long" in self.check_list:
+            if "netloc_too_long" in check_list:
                 self.check_result["url"]["netloc_too_long"] += 1 if UrlChecker.netloc_too_long(url) else 0
-            if "have_unusual" in self.check_list:
+            if "have_unusual" in check_list:
                 self.check_result["url"]["have_unusual"] += 1 if UrlChecker.have_unusual_char(url) else 0
-            if "in_phish_tank" in self.check_list:
+            if "in_phish_tank" in check_list:
                 self.check_result["url"]["in_phish_tank"] += 1 if UrlChecker.in_phish_tank(url) else 0
 
             if self.is_connected:
 
-                if "create_less_3_month" in self.check_list:
+                if "create_less_3_month" in check_list:
                     self.check_result["url"]["create_less_3_month"] += 1 if UrlChecker.create_less_3_month(url) else 0
-                if "low_pr" in self.check_list:
+                if "low_pr" in check_list:
                     self.check_result["url"]["low_pr"] += 1 if UrlChecker.low_pr(url) else 0
 
         return self.check_result
 
-    def detect_time(self):
+    def detect_time(self, check_list):
         time = 0.0
         url_count = len(self.eml_info.urls)
         for ct in check_time:
-            if ct in self.check_list:
+            if ct in check_list:
                 time += url_count * check_time[ct]
         return time
 

@@ -3,6 +3,7 @@ import time
 from PyQt5.QtCore import QFile, QSize, Qt
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView, QCheckBox
 
+from checker import checker_items
 from checker.checker import Checker
 from reader.eml_reader import EmlReader
 from ui.view.main import Ui_MainWindow
@@ -29,12 +30,11 @@ class MainController(QMainWindow, Ui_MainWindow):
         self.html_cb.stateChanged.connect(self.test_item_changed)
         self.accessory_cb.stateChanged.connect(self.test_item_changed)
 
-        self.email_list_table.itemClicked.connect(self.email_check_changed)
+        self.email_list_table.itemClicked.connect(self.update_detect_time_label())
 
         # save args
         self.email_info_list = {}
-        self.detect_time = 0
-        self.check_email_count = 0
+        self.check_list = []
 
     def import_btn_on_click(self):
         fname = QFileDialog.getOpenFileName(self, "Open File", "./", "Eml (*.eml)")
@@ -53,7 +53,7 @@ class MainController(QMainWindow, Ui_MainWindow):
 
             self.email_list_table.setItem(now_row, 0, cb)
 
-            self.email_info_list[str(now_row)] = {"info": info, "check_box": cb}
+            self.email_info_list[str(now_row)] = {"checker": Checker(info), "info": info, "check_box": cb}
 
             self.email_list_table.setItem(now_row, 1, QTableWidgetItem(info.subject))
             self.email_list_table.setItem(now_row, 2, QTableWidgetItem(info.sender))
@@ -63,28 +63,31 @@ class MainController(QMainWindow, Ui_MainWindow):
             self.check_email_count += 1
             self.update_detect_time_label()
 
-    def email_check_changed(self):
-        self.check_email_count = 0
+    def update_detect_time_label(self):
+        t = 0.0
         for item in self.email_info_list.values():
             if item["check_box"].checkState() == Qt.Checked:
-                self.check_email_count += 1
-        self.update_detect_time_label()
-
-    def update_detect_time_label(self):
-        self.time_required_label.setText(str(self.detect_time * self.check_email_count) + "s")
+                checker = item["checker"]
+                t += checker.detect_time(self.check_list)
+        self.time_required_label.setText(str(t)[:7] + "s")
 
     def test_item_changed(self):
-        self.detect_time = 0
+        self.check_list = []
         if self.plain_cb.checkState() == Qt.Checked:
-            self.detect_time += Checker.detect_time["plain"]
+            self.check_list.extend(checker_items.plain)
+
         if self.html_cb.checkState() == Qt.Checked:
-            self.detect_time += Checker.detect_time["html"]
+            self.check_list.extend(checker_items.html)
+
         if self.accessory_cb.checkState() == Qt.Checked:
-            self.detect_time += Checker.detect_time["accessory"]
+            self.check_list.extend(checker_items.accessory)
+
         if self.url_basic_cb.checkState() == Qt.Checked:
-            self.detect_time += Checker.detect_time["url_basic"]
+            self.check_list.extend(checker_items.url_basic)
+
         if self.url_adv_cb.checkState() == Qt.Checked:
-            self.detect_time += Checker.detect_time["url_advance"]
+            self.check_list.extend(checker_items.url_advance)
+
         self.update_detect_time_label()
 
     def check_net_on_click(self):

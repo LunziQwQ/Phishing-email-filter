@@ -17,7 +17,7 @@ plain = {
     "inducible_title"
     "inducible_content"
 }
-Accessory = {
+accessory = {
     "unusual_size",
     "trick_type"
 }

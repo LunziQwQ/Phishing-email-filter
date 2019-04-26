@@ -16,7 +16,7 @@ check_time = {
 class CommonChecker:
     inducible_db = None
 
-    def __init__(self, eml_info, check_list, is_connected):
+    def __init__(self, eml_info, is_connected):
         self.eml_info = eml_info
         self.check_result = {
             "common": {
@@ -25,23 +25,22 @@ class CommonChecker:
                 "inducible_title": 0
             }
         }
-        self.check_list = check_list
         self.is_connected = is_connected
 
-    def check(self):
-        if "abnormal_time" in self.check_list:
+    def check(self, check_list):
+        if "abnormal_time" in check_list:
             self.check_result["common"]["abnormal_time"] += CommonChecker.is_abnormal_time(self.eml_info)
-        if "inducible_title" in self.check_list:
+        if "inducible_title" in check_list:
             self.check_result["common"]["inducible_title"] += CommonChecker.inducible_title(self.eml_info)
-        if "inducible_comment" in self.check_list:
+        if "inducible_comment" in check_list:
             self.check_result["common"]["inducible_comment"] += CommonChecker.inducible_comment(self.eml_info)
 
         return self.check_result
 
-    def detect_time(self):
+    def detect_time(self, check_list):
         time = check_time["abnormal_time"] + check_time["inducible_title"]
         for pb in self.eml_info.plain_block:
-            if "inducible_comment" in self.check_list:
+            if "inducible_comment" in check_list:
                 time += len(pb) * check_time["inducible_comment"]
         return time
 
