@@ -27,7 +27,6 @@ class EmailInfo:
 
         if eml.is_multipart():
             for block in eml.walk():
-
                 try:
                     # 保存html类型的内容块
                     if block.get_content_type() == "text/html":
