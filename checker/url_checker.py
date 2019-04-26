@@ -8,13 +8,15 @@ from utils.sogou_rank_query import get_sogou_rank
 from utils.whois_query import get_create_time
 
 ip_regex = r'(?:[0-9]{1,3}\.){3}[0-9]{1,3}'
-full_check_list = ["have_ip",
-                   "netloc_too_long",
-                   "low_pr",
-                   "have_unusual",
-                   "in_phish_tank",
-                   "create_less_3_month",
-                   "have_redirect"]
+full_check_list = [
+    "have_ip",
+    "netloc_too_long",
+    "low_pr",
+    "have_unusual",
+    "in_phish_tank",
+    "create_less_3_month",
+    "have_redirect"
+]
 
 
 class UrlChecker:

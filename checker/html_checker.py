@@ -1,5 +1,6 @@
-full_check_list = ["have_script",
-                   ]
+full_check_list = [
+    "have_script",
+]
 
 
 class HtmlChecker:

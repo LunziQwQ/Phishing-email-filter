@@ -1,8 +1,10 @@
 from data.inducible_words_db import InducibleWordsDB
 
-full_check_list = ["abnormal_time",
-                   "inducible_title"
-                   ]
+full_check_list = [
+    "abnormal_time",
+    "inducible_title",
+    "inducible_comment"
+]
 
 
 class CommonChecker:
@@ -25,12 +27,15 @@ class CommonChecker:
             self.check_result["common"]["abnormal_time"] += CommonChecker.is_abnormal_time(self.eml_info)
         if "inducible_title" in self.check_list:
             self.check_result["common"]["inducible_title"] += CommonChecker.inducible_title(self.eml_info)
+        if "inducible_comment" in self.check_list:
+            self.check_result["common"]["inducible_comment"] += CommonChecker.inducible_comment(self.eml_info)
 
         return self.check_result
 
     @classmethod
     def init_inducible_db(cls):
-        cls.inducible_db = InducibleWordsDB()
+        if not cls.inducible_db:
+            cls.inducible_db = InducibleWordsDB()
 
     @staticmethod
     def is_abnormal_time(eml_info):
@@ -38,7 +43,13 @@ class CommonChecker:
 
     @classmethod
     def inducible_title(cls, eml_info):
-        if not cls.inducible_db:
-            cls.init_inducible_db()
-
+        cls.init_inducible_db()
         return cls.inducible_db.inducible_words(content=eml_info.subject)
+
+    @classmethod
+    def inducible_comment(cls, eml_info):
+        cls.init_inducible_db()
+        count = 0
+        for pb in eml_info.plain_block:
+            count += cls.inducible_db.inducible_words(content=pb)
+        return count

@@ -60,9 +60,10 @@ class EmailInfo:
         self.a_tags = self.get_a_tags()
         self.urls = [a_tag[0] for a_tag in self.a_tags]
 
-    def decode_multiline_header(self, str):
+    @staticmethod
+    def decode_multiline_header(s):
         ret = []
-        for b, e in email.header.decode_header(re.sub(r'\n\s+', ' ', str)):
+        for b, e in email.header.decode_header(re.sub(r'\n\s+', ' ', s)):
             if e:
                 if e.lower() == 'gb2312':
                     e = 'gb18030'
