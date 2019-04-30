@@ -1,13 +1,21 @@
 import time
 
 from PyQt5.QtCore import QFile, QSize, Qt
-from PyQt5.QtWidgets import QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView, QCheckBox
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView, QCheckBox, QDialog
 
 from checker import checker_items
 from checker.checker import Checker
 from reader.eml_reader import EmlReader
+from ui.view import DetectReport
 from ui.view.main import Ui_MainWindow
 from utils.system_info import is_connected
+
+
+class _ReportWindow(QDialog):
+    def __init__(self):
+        QDialog.__init__(self)
+        self.child = DetectReport.Ui_Dialog()
+        self.child.setupUi(self)
 
 
 class MainController(QMainWindow, Ui_MainWindow):
@@ -15,7 +23,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
-
+        self.report_window = _ReportWindow()
         # set table prop
         self.email_list_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.email_list_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
@@ -23,6 +31,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         # bind sign
         self.import_btn.clicked.connect(self.import_btn_on_click)
         self.check_net_btn.clicked.connect(self.check_net_on_click)
+        self.start_btn.clicked.connect(self.report_window.show)
 
         self.url_adv_cb.stateChanged.connect(self.test_item_changed)
         self.url_basic_cb.stateChanged.connect(self.test_item_changed)
@@ -35,6 +44,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         # save args
         self.email_info_list = {}
         self.check_list = []
+
 
     def import_btn_on_click(self):
         fname = QFileDialog.getOpenFileName(self, "Open File", "./", "Eml (*.eml)")

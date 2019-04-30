@@ -44,7 +44,7 @@ class UrlChecker:
                 "have_unusual": 0,
                 "in_phish_tank": 0,
                 "create_less_3_month": 0,
-                "redirect": 0
+                "have_redirect": 0
             }
         }
         self.is_connected = is_connected
@@ -59,6 +59,9 @@ class UrlChecker:
                 self.check_result["url"]["have_unusual"] += 1 if UrlChecker.have_unusual_char(url) else 0
             if "in_phish_tank" in check_list:
                 self.check_result["url"]["in_phish_tank"] += 1 if UrlChecker.in_phish_tank(url) else 0
+            if "have_redirect" in check_list:
+                self.check_result["url"]["have_redirect"] += 1 if UrlChecker.have_redirect(url) else 0
+
 
             if self.is_connected:
 

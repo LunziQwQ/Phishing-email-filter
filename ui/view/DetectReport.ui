@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1217</width>
-    <height>724</height>
+    <width>963</width>
+    <height>737</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,21 +16,21 @@
   <widget class="QProgressBar" name="progressBar">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>20</y>
-     <width>1051</width>
+     <x>150</x>
+     <y>10</y>
+     <width>791</width>
      <height>21</height>
     </rect>
    </property>
    <property name="value">
-    <number>60</number>
+    <number>37</number>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>20</y>
+     <x>20</x>
+     <y>10</y>
      <width>121</width>
      <height>16</height>
     </rect>
@@ -42,33 +42,50 @@
   <widget class="QTableWidget" name="tableWidget_2">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>510</y>
-     <width>1191</width>
-     <height>201</height>
+     <x>20</x>
+     <y>530</y>
+     <width>921</width>
+     <height>191</height>
     </rect>
    </property>
+   <property name="autoScroll">
+    <bool>false</bool>
+   </property>
+   <property name="autoScrollMargin">
+    <number>0</number>
+   </property>
+   <property name="verticalScrollMode">
+    <enum>QAbstractItemView::ScrollPerPixel</enum>
+   </property>
+   <property name="horizontalScrollMode">
+    <enum>QAbstractItemView::ScrollPerPixel</enum>
+   </property>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>197</number>
+    <number>225</number>
    </attribute>
-   <column>
+   <row>
     <property name="text">
-     <string>检测结果</string>
+     <string>1</string>
     </property>
-   </column>
-   <column>
+   </row>
+   <row>
     <property name="text">
-     <string>威胁评分</string>
+     <string>2</string>
     </property>
-   </column>
-   <column>
+   </row>
+   <row>
     <property name="text">
-     <string>综合概率</string>
+     <string>3</string>
     </property>
-   </column>
+   </row>
+   <row>
+    <property name="text">
+     <string>4</string>
+    </property>
+   </row>
    <column>
     <property name="text">
-     <string>Mail Name</string>
+     <string>Subject</string>
     </property>
     <property name="font">
      <font>
@@ -78,69 +95,554 @@
    </column>
    <column>
     <property name="text">
-     <string>检测状态</string>
+     <string>Status</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>报告详情</string>
+     <string>Result</string>
     </property>
    </column>
+   <column>
+    <property name="text">
+     <string>Threat Score</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>Product change notification: transitioning user groups</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>finished</string>
+    </property>
+   </item>
+   <item row="0" column="2">
+    <property name="text">
+     <string>safe</string>
+    </property>
+   </item>
+   <item row="0" column="3">
+    <property name="text">
+     <string>0%</string>
+    </property>
+   </item>
+   <item row="1" column="0">
+    <property name="text">
+     <string>
+紧急！！！</string>
+    </property>
+   </item>
+   <item row="1" column="1">
+    <property name="text">
+     <string>processing</string>
+    </property>
+   </item>
+   <item row="1" column="2">
+    <property name="text">
+     <string>threatening</string>
+    </property>
+   </item>
+   <item row="1" column="3">
+    <property name="text">
+     <string>64%</string>
+    </property>
+   </item>
+   <item row="2" column="0">
+    <property name="text">
+     <string>
+姚冰</string>
+    </property>
+   </item>
+   <item row="2" column="1">
+    <property name="text">
+     <string>waiting</string>
+    </property>
+   </item>
+   <item row="3" column="0">
+    <property name="text">
+     <string>课程表安排通知
+</string>
+    </property>
+   </item>
+   <item row="3" column="1">
+    <property name="text">
+     <string>waiting</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>50</y>
-     <width>121</width>
+     <x>20</x>
+     <y>70</y>
+     <width>161</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>实时结果反馈：</string>
+    <string>Current Feedback:</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>70</y>
-     <width>1191</width>
+     <x>20</x>
+     <y>90</y>
+     <width>921</width>
      <height>431</height>
     </rect>
    </property>
+   <property name="autoScrollMargin">
+    <number>0</number>
+   </property>
+   <property name="verticalScrollMode">
+    <enum>QAbstractItemView::ScrollPerPixel</enum>
+   </property>
+   <property name="horizontalScrollMode">
+    <enum>QAbstractItemView::ScrollPerPixel</enum>
+   </property>
+   <row>
+    <property name="text">
+     <string>url_basic : have_ip</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>url_basic : netloc_too_long</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>url_basic : have_unusual</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>url_basic : in_phish_tank</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>url_basic : have_redirect</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>url_advance : low_pr</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>url_advance : create_less_3_month</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>html : have_script</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>plain : abnormal_time</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>plain : inducible_title</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>plain : inducible_content</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>Accessory : unusual_size</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>Accessory : trick_type</string>
+    </property>
+   </row>
    <column>
     <property name="text">
-     <string>检查项目</string>
+     <string>Safe</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>项目进度</string>
+     <string>Dangerous</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>当前状态</string>
+     <string>Undetected</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>当前结果</string>
+     <string>Count</string>
     </property>
    </column>
+   <column>
+    <property name="text">
+     <string>Current Result</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="0" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="0" column="3">
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+   <item row="0" column="4">
+    <property name="text">
+     <string>safe</string>
+    </property>
+   </item>
+   <item row="1" column="0">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="1" column="1">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="1" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="1" column="3">
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+   <item row="1" column="4">
+    <property name="text">
+     <string>safe</string>
+    </property>
+   </item>
+   <item row="2" column="0">
+    <property name="text">
+     <string>6</string>
+    </property>
+   </item>
+   <item row="2" column="1">
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item row="2" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="2" column="3">
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+   <item row="2" column="4">
+    <property name="text">
+     <string>threatening</string>
+    </property>
+   </item>
+   <item row="3" column="0">
+    <property name="text">
+     <string>4</string>
+    </property>
+   </item>
+   <item row="3" column="1">
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
+   <item row="3" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="3" column="3">
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+   <item row="3" column="4">
+    <property name="text">
+     <string>threatening</string>
+    </property>
+   </item>
+   <item row="4" column="0">
+    <property name="text">
+     <string>6</string>
+    </property>
+   </item>
+   <item row="4" column="1">
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item row="4" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="4" column="3">
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+   <item row="4" column="4">
+    <property name="text">
+     <string>threatening</string>
+    </property>
+   </item>
+   <item row="5" column="0">
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
+   <item row="5" column="1">
+    <property name="text">
+     <string>4</string>
+    </property>
+   </item>
+   <item row="5" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="5" column="3">
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+   <item row="5" column="4">
+    <property name="text">
+     <string>threatening</string>
+    </property>
+   </item>
+   <item row="6" column="0">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item row="6" column="1">
+    <property name="text">
+     <string>4</string>
+    </property>
+   </item>
+   <item row="6" column="2">
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item row="6" column="3">
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+   <item row="6" column="4">
+    <property name="text">
+     <string>threatening</string>
+    </property>
+   </item>
+   <item row="7" column="0">
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item row="7" column="1">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="7" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="7" column="3">
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item row="7" column="4">
+    <property name="text">
+     <string>safe</string>
+    </property>
+   </item>
+   <item row="8" column="0">
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item row="8" column="1">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="8" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="8" column="3">
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item row="8" column="4">
+    <property name="text">
+     <string>safe</string>
+    </property>
+   </item>
+   <item row="9" column="0">
+    <property name="text">
+     <string>NA</string>
+    </property>
+   </item>
+   <item row="9" column="1">
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item row="9" column="2">
+    <property name="text">
+     <string>NA</string>
+    </property>
+   </item>
+   <item row="9" column="3">
+    <property name="text">
+     <string>NA</string>
+    </property>
+   </item>
+   <item row="9" column="4">
+    <property name="text">
+     <string>threatening</string>
+    </property>
+   </item>
+   <item row="10" column="0">
+    <property name="text">
+     <string>NA</string>
+    </property>
+   </item>
+   <item row="10" column="1">
+    <property name="text">
+     <string>12</string>
+    </property>
+   </item>
+   <item row="10" column="2">
+    <property name="text">
+     <string>NA</string>
+    </property>
+   </item>
+   <item row="10" column="3">
+    <property name="text">
+     <string>NA</string>
+    </property>
+   </item>
+   <item row="10" column="4">
+    <property name="text">
+     <string>processing</string>
+    </property>
+   </item>
+   <item row="11" column="0">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="11" column="1">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="11" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="11" column="3">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="11" column="4">
+    <property name="text">
+     <string>waiting</string>
+    </property>
+   </item>
+   <item row="12" column="0">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="12" column="1">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="12" column="2">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="12" column="3">
+    <property name="text">
+     <string>0</string>
+    </property>
+   </item>
+   <item row="12" column="4">
+    <property name="text">
+     <string>waiting</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>50</y>
+     <x>150</x>
+     <y>40</y>
      <width>141</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>email_subject</string>
+    <string>紧急！！！</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>40</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Email Subject:</string>
    </property>
   </widget>
  </widget>
