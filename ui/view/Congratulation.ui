@@ -6,24 +6,43 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>246</width>
-    <height>0</height>
+    <width>333</width>
+    <height>150</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Congratulation</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="update_completed_label">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>10</y>
+     <x>60</x>
+     <y>30</y>
      <width>331</width>
      <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>update completed~</string>
+    <string>Update Completed~</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ok_btn">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>100</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
    </property>
   </widget>
  </widget>

@@ -11,10 +11,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(239, 74)
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(50, 10, 331, 51))
-        self.label.setObjectName("label")
+        Dialog.resize(333, 150)
+        self.update_completed_label = QtWidgets.QLabel(Dialog)
+        self.update_completed_label.setGeometry(QtCore.QRect(60, 30, 331, 51))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(14)
+        self.update_completed_label.setFont(font)
+        self.update_completed_label.setObjectName("update_completed_label")
+        self.ok_btn = QtWidgets.QPushButton(Dialog)
+        self.ok_btn.setGeometry(QtCore.QRect(120, 100, 93, 28))
+        self.ok_btn.setObjectName("ok_btn")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -22,5 +29,6 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Congratulation"))
-        self.label.setText(_translate("Dialog", "update completed~"))
+        self.update_completed_label.setText(_translate("Dialog", "Update Completed~"))
+        self.ok_btn.setText(_translate("Dialog", "OK"))
 

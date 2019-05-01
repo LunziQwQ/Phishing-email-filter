@@ -11,16 +11,20 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(311, 128)
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(30, 20, 331, 51))
-        self.label.setObjectName("label")
-        self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(40, 80, 93, 28))
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(180, 80, 93, 28))
-        self.pushButton_2.setObjectName("pushButton_2")
+        Dialog.resize(399, 134)
+        self.update_confirm_label = QtWidgets.QLabel(Dialog)
+        self.update_confirm_label.setGeometry(QtCore.QRect(40, 20, 401, 51))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(12)
+        self.update_confirm_label.setFont(font)
+        self.update_confirm_label.setObjectName("update_confirm_label")
+        self.yes_btn = QtWidgets.QPushButton(Dialog)
+        self.yes_btn.setGeometry(QtCore.QRect(60, 80, 121, 31))
+        self.yes_btn.setObjectName("yes_btn")
+        self.no_btn = QtWidgets.QPushButton(Dialog)
+        self.no_btn.setGeometry(QtCore.QRect(210, 80, 121, 31))
+        self.no_btn.setObjectName("no_btn")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -28,7 +32,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Please Confirm"))
-        self.label.setText(_translate("Dialog", "Whether to confirm the update?"))
-        self.pushButton.setText(_translate("Dialog", "Yes"))
-        self.pushButton_2.setText(_translate("Dialog", "NO"))
+        self.update_confirm_label.setText(_translate("Dialog", "Whether to confirm the update ?"))
+        self.yes_btn.setText(_translate("Dialog", "Yes"))
+        self.no_btn.setText(_translate("Dialog", "NO"))
 
