@@ -3,13 +3,13 @@ from data.inducible_words_db import InducibleWordsDB
 full_check_list = [
     "abnormal_time",
     "inducible_title",
-    "inducible_comment"
+    "inducible_content"
 ]
 
 check_time = {
     "abnormal_time": 0.01,
     "inducible_title": 0.01,
-    "inducible_comment": 0.0001
+    "inducible_content": 0.0001
 }
 
 
@@ -23,7 +23,7 @@ class CommonChecker:
                 "count": len(self.eml_info.html_block),
                 "abnormal_time": 0,
                 "inducible_title": 0,
-                "inducible_comment": 0
+                "inducible_content": 0
             }
         }
         self.is_connected = is_connected
@@ -34,15 +34,15 @@ class CommonChecker:
         if "inducible_title" in check_list:
             self.check_result["common"]["inducible_title"] += CommonChecker.inducible_title(self.eml_info)
         if "inducible_content" in check_list:
-            self.check_result["common"]["inducible_comment"] += CommonChecker.inducible_comment(self.eml_info)
+            self.check_result["common"]["inducible_content"] += CommonChecker.inducible_comment(self.eml_info)
 
         return self.check_result
 
     def detect_time(self, check_list):
         time = check_time["abnormal_time"] + check_time["inducible_title"]
         for pb in self.eml_info.plain_block:
-            if "inducible_comment" in check_list:
-                time += len(pb) * check_time["inducible_comment"]
+            if "inducible_content" in check_list:
+                time += len(pb) * check_time["inducible_content"]
         return time
 
     @classmethod

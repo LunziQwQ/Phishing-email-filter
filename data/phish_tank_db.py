@@ -4,8 +4,8 @@ import json
 class PhishTankDB:
 
     def __init__(self):
-        with open("data/phish_urls.json", "r") as f:
-            self.datas = json.load(f)
+        with open("data/phish_urls.json", "r", encoding="utf-8") as f:
+            self.datas = json.loads(f.read())
 
     def is_phish_url(self, url):
         for phish_url in self.datas:

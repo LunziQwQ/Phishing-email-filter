@@ -2,6 +2,9 @@
 .vscode/
 .idea/
 
+### venv conda etc.
+venv/
+
 ### OS generated
 #/.DS_Store
 

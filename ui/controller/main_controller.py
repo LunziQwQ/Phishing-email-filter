@@ -39,6 +39,9 @@ class MainController(QMainWindow, Ui_MainWindow):
         self.email_info_list = {}
         self.check_list = []
 
+        # init invoke
+        self.check_net_on_click()
+
     def import_btn_on_click(self):
         fname = QFileDialog.getOpenFileName(self, "Open File", "./", "Eml (*.eml)")
         # 打开文件 返回一个字符串第一个是路径， 第二个是要打开文件的类型
@@ -101,6 +104,10 @@ class MainController(QMainWindow, Ui_MainWindow):
             self.network_status_label.setText("failed")
             self.network_status_label.setStyleSheet(
                 "color:rgb(200,17,17,255);")
+
+    def update_on_click(self):
+        # TODO
+        pass
 
     def start_on_click(self):
         self.detect_report_window = DetectReportController(self.email_info_list, self.check_list)
