@@ -63,26 +63,6 @@
    <attribute name="horizontalHeaderDefaultSectionSize">
     <number>225</number>
    </attribute>
-   <row>
-    <property name="text">
-     <string>1</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>2</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>3</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>4</string>
-    </property>
-   </row>
    <column>
     <property name="text">
      <string>Subject</string>
@@ -108,69 +88,6 @@
      <string>Threat Score</string>
     </property>
    </column>
-   <item row="0" column="0">
-    <property name="text">
-     <string>Product change notification: transitioning user groups</string>
-    </property>
-   </item>
-   <item row="0" column="1">
-    <property name="text">
-     <string>finished</string>
-    </property>
-   </item>
-   <item row="0" column="2">
-    <property name="text">
-     <string>safe</string>
-    </property>
-   </item>
-   <item row="0" column="3">
-    <property name="text">
-     <string>0%</string>
-    </property>
-   </item>
-   <item row="1" column="0">
-    <property name="text">
-     <string>
-紧急！！！</string>
-    </property>
-   </item>
-   <item row="1" column="1">
-    <property name="text">
-     <string>processing</string>
-    </property>
-   </item>
-   <item row="1" column="2">
-    <property name="text">
-     <string>threatening</string>
-    </property>
-   </item>
-   <item row="1" column="3">
-    <property name="text">
-     <string>64%</string>
-    </property>
-   </item>
-   <item row="2" column="0">
-    <property name="text">
-     <string>
-姚冰</string>
-    </property>
-   </item>
-   <item row="2" column="1">
-    <property name="text">
-     <string>waiting</string>
-    </property>
-   </item>
-   <item row="3" column="0">
-    <property name="text">
-     <string>课程表安排通知
-</string>
-    </property>
-   </item>
-   <item row="3" column="1">
-    <property name="text">
-     <string>waiting</string>
-    </property>
-   </item>
   </widget>
   <widget class="QLabel" name="current_feedback_label">
    <property name="geometry">
@@ -295,327 +212,327 @@
    </column>
    <item row="0" column="0">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="0" column="1">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="0" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="0" column="3">
     <property name="text">
-     <string>7</string>
+     <string/>
     </property>
    </item>
    <item row="0" column="4">
     <property name="text">
-     <string>safe</string>
+     <string/>
     </property>
    </item>
    <item row="1" column="0">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="1" column="1">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="1" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="1" column="3">
     <property name="text">
-     <string>7</string>
+     <string/>
     </property>
    </item>
    <item row="1" column="4">
     <property name="text">
-     <string>safe</string>
+     <string/>
     </property>
    </item>
    <item row="2" column="0">
     <property name="text">
-     <string>6</string>
+     <string/>
     </property>
    </item>
    <item row="2" column="1">
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
    </item>
    <item row="2" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="2" column="3">
     <property name="text">
-     <string>7</string>
+     <string/>
     </property>
    </item>
    <item row="2" column="4">
     <property name="text">
-     <string>threatening</string>
+     <string/>
     </property>
    </item>
    <item row="3" column="0">
     <property name="text">
-     <string>4</string>
+     <string/>
     </property>
    </item>
    <item row="3" column="1">
     <property name="text">
-     <string>3</string>
+     <string/>
     </property>
    </item>
    <item row="3" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="3" column="3">
     <property name="text">
-     <string>7</string>
+     <string/>
     </property>
    </item>
    <item row="3" column="4">
     <property name="text">
-     <string>threatening</string>
+     <string/>
     </property>
    </item>
    <item row="4" column="0">
     <property name="text">
-     <string>6</string>
+     <string/>
     </property>
    </item>
    <item row="4" column="1">
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
    </item>
    <item row="4" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="4" column="3">
     <property name="text">
-     <string>7</string>
+     <string/>
     </property>
    </item>
    <item row="4" column="4">
     <property name="text">
-     <string>threatening</string>
+     <string/>
     </property>
    </item>
    <item row="5" column="0">
     <property name="text">
-     <string>3</string>
+     <string/>
     </property>
    </item>
    <item row="5" column="1">
     <property name="text">
-     <string>4</string>
+     <string/>
     </property>
    </item>
    <item row="5" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="5" column="3">
     <property name="text">
-     <string>7</string>
+     <string/>
     </property>
    </item>
    <item row="5" column="4">
     <property name="text">
-     <string>threatening</string>
+     <string/>
     </property>
    </item>
    <item row="6" column="0">
     <property name="text">
-     <string>2</string>
+     <string/>
     </property>
    </item>
    <item row="6" column="1">
     <property name="text">
-     <string>4</string>
+     <string/>
     </property>
    </item>
    <item row="6" column="2">
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
    </item>
    <item row="6" column="3">
     <property name="text">
-     <string>7</string>
+     <string/>
     </property>
    </item>
    <item row="6" column="4">
     <property name="text">
-     <string>threatening</string>
+     <string/>
     </property>
    </item>
    <item row="7" column="0">
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
    </item>
    <item row="7" column="1">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="7" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="7" column="3">
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
    </item>
    <item row="7" column="4">
     <property name="text">
-     <string>safe</string>
+     <string/>
     </property>
    </item>
    <item row="8" column="0">
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
    </item>
    <item row="8" column="1">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="8" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="8" column="3">
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
    </item>
    <item row="8" column="4">
     <property name="text">
-     <string>safe</string>
+     <string/>
     </property>
    </item>
    <item row="9" column="0">
     <property name="text">
-     <string>NA</string>
+     <string/>
     </property>
    </item>
    <item row="9" column="1">
     <property name="text">
-     <string>2</string>
+     <string/>
     </property>
    </item>
    <item row="9" column="2">
     <property name="text">
-     <string>NA</string>
+     <string/>
     </property>
    </item>
    <item row="9" column="3">
     <property name="text">
-     <string>NA</string>
+     <string/>
     </property>
    </item>
    <item row="9" column="4">
     <property name="text">
-     <string>threatening</string>
+     <string/>
     </property>
    </item>
    <item row="10" column="0">
     <property name="text">
-     <string>NA</string>
+     <string/>
     </property>
    </item>
    <item row="10" column="1">
     <property name="text">
-     <string>12</string>
+     <string/>
     </property>
    </item>
    <item row="10" column="2">
     <property name="text">
-     <string>NA</string>
+     <string/>
     </property>
    </item>
    <item row="10" column="3">
     <property name="text">
-     <string>NA</string>
+     <string/>
     </property>
    </item>
    <item row="10" column="4">
     <property name="text">
-     <string>processing</string>
+     <string/>
     </property>
    </item>
    <item row="11" column="0">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="11" column="1">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="11" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="11" column="3">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="11" column="4">
     <property name="text">
-     <string>waiting</string>
+     <string/>
     </property>
    </item>
    <item row="12" column="0">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="12" column="1">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="12" column="2">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="12" column="3">
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
    </item>
    <item row="12" column="4">
     <property name="text">
-     <string>waiting</string>
+     <string/>
     </property>
    </item>
   </widget>
@@ -629,7 +546,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>紧急！！！</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="email_subject_label">
