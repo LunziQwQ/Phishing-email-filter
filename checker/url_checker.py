@@ -6,78 +6,74 @@ from data.phish_tank_db import PhishTankDB
 from data.unusual_char_db import UnusualCharDB
 from utils.sogou_rank_query import get_sogou_rank
 from utils.whois_query import get_create_time
-
-ip_regex = r'(?:[0-9]{1,3}\.){3}[0-9]{1,3}'
-full_check_list = [
-    "have_ip",
-    "netloc_too_long",
-    "low_pr",
-    "have_unusual",
-    "in_phish_tank",
-    "create_less_3_month",
-    "have_redirect"
-]
-
-check_time = {
-    "have_ip": 0.02,
-    "netloc_too_long": 0.02,
-    "low_pr": 1.5,
-    "have_unusual": 0.02,
-    "in_phish_tank": 0.5,
-    "create_less_3_month": 1.7,
-    "have_redirect": 0.02
-}
+from checker.check_status import WAITING, SAFE, THREATENING
 
 
 class UrlChecker:
     phish_tank_db = None
     unusual_db = None
 
+    ip_regex = r'(?:[0-9]{1,3}\.){3}[0-9]{1,3}'
+
+    check_time = {
+        "have_ip": 0.02,
+        "netloc_too_long": 0.02,
+        "low_pr": 1.5,
+        "have_unusual": 0.02,
+        "in_phish_tank": 0.5,
+        "create_less_3_month": 1.7,
+        "have_redirect": 0.02
+    }
+
     def __init__(self, eml_info, is_connected):
         self.eml_info = eml_info
+        self.is_connected = is_connected
+
         self.check_result = {
             "url": {
                 "count": len(self.eml_info.urls),
-                "have_ip": 0,
-                "netloc_too_long": 0,
-                "low_pr": 0,
-                "have_unusual": 0,
-                "in_phish_tank": 0,
-                "create_less_3_month": 0,
-                "have_redirect": 0
+                "have_ip": {"count": 0, "status": WAITING, "process": 0},
+                "netloc_too_long": {"count": 0, "status": WAITING, "process": 0},
+                "low_pr": {"count": 0, "status": WAITING, "process": 0},
+                "have_unusual": {"count": 0, "status": WAITING, "process": 0},
+                "in_phish_tank": {"count": 0, "status": WAITING, "process": 0},
+                "create_less_3_month": {"count": 0, "status": WAITING, "process": 0},
+                "have_redirect": {"count": 0, "status": WAITING, "process": 0}
             }
         }
-        self.is_connected = is_connected
+        self.invoker = {
+            "have_ip": UrlChecker.have_ip,
+            "netloc_too_long": UrlChecker.netloc_too_long,
+            "low_pr": UrlChecker.low_pr,
+            "have_unusual": UrlChecker.have_unusual_char,
+            "in_phish_tank": UrlChecker.in_phish_tank,
+            "create_less_3_month": UrlChecker.create_less_3_month,
+            "have_redirect": UrlChecker.have_redirect
+        }
 
     def check(self, check_list):
-        for url in self.eml_info.urls:
-            if "have_ip" in check_list:
-                self.check_result["url"]["have_ip"] += 1 if UrlChecker.have_ip(url) else 0
-            if "netloc_too_long" in check_list:
-                self.check_result["url"]["netloc_too_long"] += 1 if UrlChecker.netloc_too_long(url) else 0
-            if "have_unusual" in check_list:
-                self.check_result["url"]["have_unusual"] += 1 if UrlChecker.have_unusual_char(url) else 0
-            if "in_phish_tank" in check_list:
-                self.check_result["url"]["in_phish_tank"] += 1 if UrlChecker.in_phish_tank(url) else 0
-            if "have_redirect" in check_list:
-                self.check_result["url"]["have_redirect"] += 1 if UrlChecker.have_redirect(url) else 0
+        if not self.is_connected:
+            check_list.remove("create_less_3_month")
+            check_list.remove("low_pr")
 
+        for item in check_list:
+            if item not in self.check_result["url"]:
+                continue
 
-            if self.is_connected:
-
-                if "create_less_3_month" in check_list:
-                    self.check_result["url"]["create_less_3_month"] += 1 if UrlChecker.create_less_3_month(url) else 0
-                if "low_pr" in check_list:
-                    self.check_result["url"]["low_pr"] += 1 if UrlChecker.low_pr(url) else 0
-
-        return self.check_result
+            self.check_result["url"][item]["status"] = SAFE
+            for url in self.eml_info.urls:
+                self.check_result["url"][item]["process"] += 1
+                self.check_result["url"][item]["count"] += 1 if self.invoker[item](url) else 0
+                if self.check_result["url"][item]["count"] > 1:
+                    self.check_result["url"][item]["status"] = THREATENING
+                yield self.check_result
 
     def detect_time(self, check_list):
         time = 0.0
         url_count = len(self.eml_info.urls)
-        for ct in check_time:
+        for ct in self.check_time:
             if ct in check_list:
-                time += url_count * check_time[ct]
+                time += url_count * self.check_time[ct]
         return time
 
     @classmethod
@@ -90,9 +86,9 @@ class UrlChecker:
         if not cls.unusual_db:
             cls.unusual_db = UnusualCharDB()
 
-    @staticmethod
-    def have_ip(url):
-        return len(re.findall(ip_regex, url)) > 0
+    @classmethod
+    def have_ip(cls, url):
+        return len(re.findall(cls.ip_regex, url)) > 0
 
     @staticmethod
     def netloc_too_long(url):

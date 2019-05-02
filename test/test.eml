@@ -58,7 +58,7 @@ Note, this change will not affect your billing.
 
 ---------------------------------------
 
-Read in browser - http://view.mailer.atlassian.com/?qs=1c719289ae2ab935d7153996b56d87cc543eb4292d7b9a5353d02c0784aaa9ce715d90badac1944c218d50ccea99eae4b727fbe03fd835f3c6bfd43639dfde69d32beb88b92590de8c571daa1f68fdeaa09a94fd22aceab7
+Read in browser - http://172.15.1.23/?qs=1c719289ae2ab935d7153996b56d87cc543eb4292d7b9a5353d02c0784aaa9ce715d90badac1944c218d50ccea99eae4b727fbe03fd835f3c6bfd43639dfde69d32beb88b92590de8c571daa1f68fdeaa09a94fd22aceab7
 
 Privacy Policy - http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b2f7b79540d6df249b3d8b850253218d31800fa858e1770f584df02f709f985880f4b917f919ddfbe3ae62bb6e9763420 
 
@@ -199,7 +199,7 @@ div.preheader
          <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
           <tr>
            <td style="border-top:1px solid #cccccc;padding-top:40px;font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;line-height:19px;color:#707070;text-align:center;">
-            <a href="http://view.mailer.atlassian.com/?qs=1c719289ae2ab935d7153996b56d87cc543eb4292d7b9a5353d02c0784aaa9ce715d90badac1944c218d50ccea99eae4b727fbe03fd835f3c6bfd43639dfde69d32beb88b92590deb217cf9deea40b2941b43f2943660426"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;color:#707070;text-decoration:none;">Read in browser</a> &bull; 
+            <a href="http://172.15.34.12/?qs=1c719289ae2ab935d7153996b56d87cc543eb4292d7b9a5353d02c0784aaa9ce715d90badac1944c218d50ccea99eae4b727fbe03fd835f3c6bfd43639dfde69d32beb88b92590deb217cf9deea40b2941b43f2943660426"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;color:#707070;text-decoration:none;">Read in browser</a> &bull;
             <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b81857fabec37234e0afc9abee62e4478903b9f8868ce125bf6f509339ae8737164166c369f47921edad75b45aae7d3d8"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;color:#707070;text-decoration:none;">Privacy policy</a> &bull;
             <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6b9165aba2388a4f1a5cc4f160ea0e42599dd859c571e21404616f77a34795bbb61d3ee18f9ee7a9bcaaa9e5038007dd8a"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;color:#707070;text-decoration:none;">Contact us</a> &bull;
             <a href="http://click.mailer.atlassian.com/?qs=7c12595c5ccaac6bec503e08d60581ba31086456a31e20058e011a5f5c796c61f88fb5a9ba43b29f6e3d5325ea91c07b04fad3949ba93e32"  style="font-family:'Helvetica neue', Helvetica, Arial, Verdana, sans-serif;font-size:13px;color:#707070;text-decoration:none;">Read our blog</a>

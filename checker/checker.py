@@ -7,12 +7,13 @@ from utils.system_info import is_connected
 class Checker(object):
 
     def __init__(self, email_info):
-        is_online = is_connected()
+        # is_online = is_connected()
+        self.is_online = False
 
         self.checkers = [
-            UrlChecker(email_info, is_online),
-            CommonChecker(email_info, is_online),
-            HtmlChecker(email_info, is_online)
+            UrlChecker(email_info, self.is_online),
+            CommonChecker(email_info, self.is_online),
+            HtmlChecker(email_info, self.is_online)
         ]
 
     def detect_time(self, checker_list):
@@ -24,9 +25,5 @@ class Checker(object):
         return time
 
     def check(self, checker_list):
-        result = {}
-
         for checker in self.checkers:
-            result.update(checker.check(checker_list))
-
-        return result
+            yield checker.check(checker_list)
