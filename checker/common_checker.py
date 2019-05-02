@@ -1,21 +1,15 @@
 from data.inducible_words_db import InducibleWordsDB
 from checker.check_status import WAITING, SAFE, THREATENING, PROCESSING
 
-full_check_list = [
-    "abnormal_time",
-    "inducible_title",
-    "inducible_content"
-]
-
-check_time = {
-    "abnormal_time": 0.01,
-    "inducible_title": 0.01,
-    "inducible_content": 0.0001
-}
-
 
 class CommonChecker:
     inducible_db = None
+
+    check_time = {
+        "abnormal_time": 0.01,
+        "inducible_title": 0.01,
+        "inducible_content": 0.0001
+    }
 
     def __init__(self, eml_info, is_connected):
         self.eml_info = eml_info
@@ -48,10 +42,10 @@ class CommonChecker:
             yield self.check_result
 
     def detect_time(self, check_list):
-        time = check_time["abnormal_time"] + check_time["inducible_title"]
+        time = self.check_time["abnormal_time"] + self.check_time["inducible_title"]
         for pb in self.eml_info.plain_block:
             if "inducible_content" in check_list:
-                time += len(pb) * check_time["inducible_content"]
+                time += len(pb) * self.check_time["inducible_content"]
         return time
 
     @classmethod
