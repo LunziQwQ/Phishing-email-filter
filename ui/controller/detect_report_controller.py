@@ -20,10 +20,10 @@ class DetectReportController(QMainWindow, Ui_Dialog):
                                  email_info_list]
         self.draw_email_list_table()
 
-        chunk_length = 0
+        step_count = 0
         for info_index in self.email_info_list:
-            chunk_length += self.email_info_list[info_index]["checker"].step_count(self.check_list)
-        self.step_add = 100.0 / chunk_length if chunk_length != 0 else 0
+            step_count += self.email_info_list[info_index]["checker"].step_count(self.check_list)
+        self.step_length = 100.0 / step_count if step_count != 0 else 0
 
     def update_process(self, add):
         value = self.total_progressBar.value()
@@ -48,7 +48,7 @@ class DetectReportController(QMainWindow, Ui_Dialog):
                     table = self.report_to_feedback_table(result)
                     email_info["table"] = table
 
-                    self.update_process(self.step_add)
+                    self.update_process(self.step_length)
                     self.draw_feedback_table(table)
 
                     score = Evaluation.evaluate(result)
@@ -58,7 +58,7 @@ class DetectReportController(QMainWindow, Ui_Dialog):
 
                     QApplication.processEvents()
                     time.sleep(0.1)
-            self.update_process(self.step_add)
+            self.update_process(self.step_length)
             self.email_list_table[ei][1] = "finished"
             self.draw_email_list_table()
 
