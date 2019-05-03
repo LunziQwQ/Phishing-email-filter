@@ -4,6 +4,7 @@ import time
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 
 from checker.checker_items import full_check_items
+from evaluation.evaluation import Evaluation
 from ui.view.DetectReport import Ui_Dialog
 
 
@@ -15,9 +16,13 @@ class DetectReportController(QMainWindow, Ui_Dialog):
         self.check_list = copy.deepcopy(check_list)
         self.total_progressBar.setValue(0)
 
+        self.email_list_table = [[self.email_info_list[info_index]["info"].subject, "waiting", "", ""] for info_index in
+                                 email_info_list]
+        self.draw_email_list_table()
+
         chunk_length = 0
-        for ei in self.email_info_list:
-            chunk_length += self.email_info_list[ei]["checker"].step_count(self.check_list)
+        for info_index in self.email_info_list:
+            chunk_length += self.email_info_list[info_index]["checker"].step_count(self.check_list)
         self.step_add = 100.0 / chunk_length if chunk_length != 0 else 0
 
     def update_process(self, add):
@@ -30,20 +35,32 @@ class DetectReportController(QMainWindow, Ui_Dialog):
     def exec(self):
         QApplication.processEvents()
         result = {}
-        for ei in self.email_info_list:
-            email_info = self.email_info_list[ei]
+        for ei, eml_info in enumerate(self.email_info_list):
+            email_info = self.email_info_list[eml_info]
             checker = email_info["checker"]
             self.current_email_subject_label.setText(email_info["info"].subject)
+            self.email_list_table[ei][1] = "processing"
+            self.draw_email_list_table()
             for items in checker.check(self.check_list):
                 for item in items:
                     result.update(item)
+
                     table = self.report_to_feedback_table(result)
                     email_info["table"] = table
-                    self.draw_feedback_table(table)
+
                     self.update_process(self.step_add)
+                    self.draw_feedback_table(table)
+
+                    score = Evaluation.evaluate(result)
+                    self.email_list_table[ei][2] = "safe" if score < 35 else "threatening"
+                    self.email_list_table[ei][3] = "%.2f%%" % score
+                    self.draw_email_list_table()
+
                     QApplication.processEvents()
                     time.sleep(0.1)
             self.update_process(self.step_add)
+            self.email_list_table[ei][1] = "finished"
+            self.draw_email_list_table()
 
         self.total_progressBar.setValue(100)
 
@@ -77,3 +94,9 @@ class DetectReportController(QMainWindow, Ui_Dialog):
             if item in self.check_list:
                 for ti, data in enumerate(table[item]):
                     self.current_feedback_tableWidget.setItem(now_row, ti, QTableWidgetItem(str(data)))
+
+    def draw_email_list_table(self):
+        for now_row, eml in enumerate(self.email_list_table):
+            self.total_feedback_tableWidget.setRowCount(now_row+1)
+            for ti, data in enumerate(eml):
+                self.total_feedback_tableWidget.setItem(now_row, ti, QTableWidgetItem(str(data)))

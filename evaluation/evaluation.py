@@ -23,7 +23,9 @@ class Evaluation:
             count = report[chunk]["count"]
             if count > 0:
                 for item in report[chunk]:
-                    if item != "count" and report[chunk][item] > 0:
-                        score += cls.weights[item] * report[chunk][item] / count
+                    if item != "count" and report[chunk][item]["count"] > 0:
+                        score += cls.weights[item] * report[chunk][item]["count"] / count
 
-        return "%.2f" % score
+        if score > 100:
+            score = 100
+        return score
