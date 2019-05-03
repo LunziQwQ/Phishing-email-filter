@@ -29,6 +29,6 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Congratulation"))
-        self.update_completed_label.setText(_translate("Dialog", "Update Completed~"))
+        self.update_completed_label.setText(_translate("Dialog", "Updating. Pleast wait"))
         self.ok_btn.setText(_translate("Dialog", "OK"))
 

@@ -1,11 +1,13 @@
 import time
+import random
 
 from PyQt5.QtCore import QFile, Qt
-from PyQt5.QtWidgets import QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView, QApplication
 from checker import checker_items
 from checker.checker import Checker
 from reader.eml_reader import EmlReader
 from ui.controller.detect_report_controller import DetectReportController
+from ui.controller.congratulation_controller import CongratulationController
 from ui.view.main import Ui_MainWindow
 from utils.system_info import is_connected
 
@@ -17,6 +19,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         self.detect_report_window = None
+        self.congratulation_window = None
 
         # set table prop
         self.email_list_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -26,6 +29,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         self.import_btn.clicked.connect(self.import_btn_on_click)
         self.check_net_btn.clicked.connect(self.check_net_on_click)
         self.start_btn.clicked.connect(self.start_on_click)
+        self.update_btn.clicked.connect(self.update_on_click)
 
         self.url_adv_cb.stateChanged.connect(self.test_item_changed)
         self.url_basic_cb.stateChanged.connect(self.test_item_changed)
@@ -106,8 +110,10 @@ class MainController(QMainWindow, Ui_MainWindow):
                 "color:rgb(200,17,17,255);")
 
     def update_on_click(self):
-        # TODO
-        pass
+        self.congratulation_window = CongratulationController()
+        self.congratulation_window.show()
+        QApplication.processEvents()
+        self.congratulation_window.start_update()
 
     def start_on_click(self):
         self.detect_report_window = DetectReportController(self.email_info_list, self.check_list)

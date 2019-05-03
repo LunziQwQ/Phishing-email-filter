@@ -44,3 +44,4 @@ class HtmlChecker:
     @staticmethod
     def have_script(html):
         return "<script>" in html or "</script>"
+ 
