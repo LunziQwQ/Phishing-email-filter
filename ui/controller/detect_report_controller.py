@@ -33,7 +33,7 @@ class DetectReportController(QMainWindow, Ui_Dialog):
         for ei in self.email_info_list:
             email_info = self.email_info_list[ei]
             checker = email_info["checker"]
-            self.email_subject_label.setText("Email Subject: " + email_info["info"].subject)
+            self.current_email_subject_label.setText(email_info["info"].subject)
             for items in checker.check(self.check_list):
                 for item in items:
                     result.update(item)
@@ -42,8 +42,10 @@ class DetectReportController(QMainWindow, Ui_Dialog):
                     self.draw_feedback_table(table)
                     self.update_process(self.step_add)
                     QApplication.processEvents()
-                    time.sleep(0.2)
-        self.update_process(self.step_add)
+                    time.sleep(0.1)
+            self.update_process(self.step_add)
+
+        self.total_progressBar.setValue(100)
 
     @staticmethod
     def report_to_feedback_table(result):
