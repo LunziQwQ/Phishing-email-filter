@@ -14,16 +14,21 @@ class DetectReportController(QMainWindow, Ui_Dialog):
         self.setupUi(self)
         self.email_info_list = email_info_list
         self.check_list = copy.deepcopy(check_list)
-        self.total_progressBar.setValue(0)
 
-        self.email_list_table = [[self.email_info_list[info_index]["info"].subject, "waiting", "", ""] for info_index in
-                                 email_info_list]
-        self.draw_email_list_table()
+        self.total_feedback_tableWidget.cellClicked.connect(self.email_list_table_on_click)
+        self.total_feedback_tableWidget.focusOutEvent = self.email_list_table_out_focus
+
+        self.update_feedback = True
+        self.total_progressBar.setValue(0)
 
         step_count = 0
         for info_index in self.email_info_list:
             step_count += self.email_info_list[info_index]["checker"].step_count(self.check_list)
         self.step_length = 100.0 / step_count if step_count != 0 else 0
+
+        self.email_list_table = [[self.email_info_list[info_index]["info"].subject, "waiting", "", ""] for info_index in
+                                 email_info_list]
+        self.draw_email_list_table()
 
     def update_process(self, add):
         value = self.total_progressBar.value()
@@ -57,7 +62,6 @@ class DetectReportController(QMainWindow, Ui_Dialog):
                     self.draw_email_list_table()
 
                     QApplication.processEvents()
-                    time.sleep(0.1)
             self.update_process(self.step_length)
             self.email_list_table[ei][1] = "finished"
             self.draw_email_list_table()
@@ -89,14 +93,24 @@ class DetectReportController(QMainWindow, Ui_Dialog):
 
         return table
 
-    def draw_feedback_table(self, table):
-        for now_row, item in enumerate(table):
-            if item in self.check_list:
-                for ti, data in enumerate(table[item]):
-                    self.current_feedback_tableWidget.setItem(now_row, ti, QTableWidgetItem(str(data)))
+    def draw_feedback_table(self, table, force_update=False):
+        if self.update_feedback or force_update:
+            for now_row, item in enumerate(table):
+                if item in self.check_list:
+                    for ti, data in enumerate(table[item]):
+                        self.current_feedback_tableWidget.setItem(now_row, ti, QTableWidgetItem(str(data)))
 
     def draw_email_list_table(self):
         for now_row, eml in enumerate(self.email_list_table):
-            self.total_feedback_tableWidget.setRowCount(now_row+1)
+            self.total_feedback_tableWidget.setRowCount(now_row + 1)
             for ti, data in enumerate(eml):
                 self.total_feedback_tableWidget.setItem(now_row, ti, QTableWidgetItem(str(data)))
+
+    def email_list_table_on_click(self, row, column):
+        self.update_feedback = self.email_list_table[row][1] == "processing"
+        if "table" in self.email_info_list[str(row)]:
+            self.draw_feedback_table(self.email_info_list[str(row)]["table"], force_update=True)
+            QApplication.processEvents()
+
+    def email_list_table_out_focus(self, event):
+        self.update_feedback = True

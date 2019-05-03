@@ -23,7 +23,7 @@ class CommonChecker:
     def check(self, check_list):
         check_result = {
             "common": {
-                "count": len(self.eml_info.html_block),
+                "count": 1,
                 "abnormal_time": {"count": 0, "status": WAITING, "process": 0},
                 "inducible_title": {"count": 0, "status": WAITING, "process": "NA"},
                 "inducible_content": {"count": 0, "status": WAITING, "process": "NA"}
@@ -35,6 +35,8 @@ class CommonChecker:
 
             check_result["common"][item]["status"] = PROCESSING
             check_result["common"][item]["count"] += self.invoker[item](self.eml_info)
+            if check_result["common"][item]["process"] != "NA":
+                check_result["common"][item]["process"] += 1
             check_result["common"][item]["status"] = SAFE if \
                 check_result["common"][item]["count"] else THREATENING
             yield check_result
@@ -57,7 +59,7 @@ class CommonChecker:
 
     @staticmethod
     def is_abnormal_time(eml_info):
-        return eml_info.date[3] in range(0, 6)
+        return 1 if eml_info.date[3] in range(0, 6) else 0
 
     @classmethod
     def inducible_title(cls, eml_info):

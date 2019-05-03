@@ -25,16 +25,16 @@ class MainController(QMainWindow, Ui_MainWindow):
         self.email_list_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
 
         # bind sign
-        self.import_btn.clicked.connect(self.import_btn_on_click)
+        self.import_btn.clicked.connect(self.import_eml_on_click)
         self.check_net_btn.clicked.connect(self.check_net_on_click)
         self.start_btn.clicked.connect(self.start_on_click)
         self.update_btn.clicked.connect(self.update_on_click)
 
-        self.url_adv_cb.stateChanged.connect(self.test_item_changed)
-        self.url_basic_cb.stateChanged.connect(self.test_item_changed)
-        self.plain_cb.stateChanged.connect(self.test_item_changed)
-        self.html_cb.stateChanged.connect(self.test_item_changed)
-        self.accessory_cb.stateChanged.connect(self.test_item_changed)
+        self.url_adv_cb.stateChanged.connect(self.check_item_changed)
+        self.url_basic_cb.stateChanged.connect(self.check_item_changed)
+        self.plain_cb.stateChanged.connect(self.check_item_changed)
+        self.html_cb.stateChanged.connect(self.check_item_changed)
+        self.accessory_cb.stateChanged.connect(self.check_item_changed)
 
         self.email_list_table.itemClicked.connect(self.update_detect_time_label)
 
@@ -45,7 +45,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         # init invoke
         self.check_net_on_click()
 
-    def import_btn_on_click(self):
+    def import_eml_on_click(self):
         fname = QFileDialog.getOpenFileName(self, "Open File", "./", "Eml (*.eml)")
         # 打开文件 返回一个字符串第一个是路径， 第二个是要打开文件的类型
         # 如果用户主动关闭文件对话框，则返回值为空
@@ -79,7 +79,7 @@ class MainController(QMainWindow, Ui_MainWindow):
                 t += checker.detect_time(self.check_list)
         self.time_required_label.setText("%.2fs" % t)
 
-    def test_item_changed(self):
+    def check_item_changed(self):
         self.check_list = []
         if self.plain_cb.checkState() == Qt.Checked:
             self.check_list.extend(checker_items.plain)

@@ -18,6 +18,8 @@ class EmailInfo:
         self.sender = email.utils.parseaddr(eml.get("from"))[1]
         self.receiver = email.utils.parseaddr(eml.get("to"))[1]
         self.date = email.utils.parsedate(eml.get("date"))
+        if not self.date:
+            self.date = (2019, 0, 0, 0, 0, 0, 0, 0, 0)
         self.mime_version = eml.get("MIME_Version")
         self.content_type = eml.get_content_type()
         self.boundary = eml.get_boundary()
@@ -30,11 +32,13 @@ class EmailInfo:
                 try:
                     # 保存html类型的内容块
                     if block.get_content_type() == "text/html":
-                        self.html_block.append(block.get_payload(decode=True).strip().decode(block.get_content_charset()))
+                        self.html_block.append(
+                            block.get_payload(decode=True).strip().decode(block.get_content_charset()))
 
                     # 保存plain文本的内容块
                     if block.get_content_type() == "text/plain":
-                        self.plain_block.append(block.get_payload(decode=True).strip().decode(block.get_content_charset()))
+                        self.plain_block.append(
+                            block.get_payload(decode=True).strip().decode(block.get_content_charset()))
                 except UnicodeDecodeError:
                     # 适应中文编码
                     if block.get_content_type() == "text/html":
