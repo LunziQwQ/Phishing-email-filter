@@ -7,8 +7,7 @@ from utils.system_info import is_connected
 class Checker(object):
 
     def __init__(self, email_info):
-        # is_online = is_connected()
-        self.is_online = False
+        self.is_online = is_connected()
 
         self.checkers = [
             UrlChecker(email_info, self.is_online),

@@ -20,13 +20,14 @@ class DetectReportController(QMainWindow, Ui_Dialog):
             for items in checker.check(self.check_list):
                 for item in items:
                     result.update(item)
-                    table = self.report_to_table(result)
+                    table = self.report_to_feedback_table(result)
                     email_info["table"] = table
-                    self.draw_table(table)
+                    self.email_subject_label.setText("Email Subject: " + email_info["info"].subject)
+                    self.draw_feedback_table(table)
                     QApplication.processEvents()
 
     @staticmethod
-    def report_to_table(result):
+    def report_to_feedback_table(result):
         table = {item: [] for item in full_check_items}
         for type_items in result:
             items_count = result[type_items]["count"]
@@ -50,7 +51,8 @@ class DetectReportController(QMainWindow, Ui_Dialog):
 
         return table
 
-    def draw_table(self, table):
+    def draw_feedback_table(self, table):
         for now_row, item in enumerate(table):
-            for ti, data in enumerate(table[item]):
-                self.current_feedback_tableWidget.setItem(now_row, ti, QTableWidgetItem(str(data)))
+            if item in self.check_list:
+                for ti, data in enumerate(table[item]):
+                    self.current_feedback_tableWidget.setItem(now_row, ti, QTableWidgetItem(str(data)))
