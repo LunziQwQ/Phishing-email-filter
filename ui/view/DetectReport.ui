@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>963</width>
-    <height>737</height>
+    <width>951</width>
+    <height>810</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,13 +43,13 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>530</y>
-     <width>921</width>
-     <height>191</height>
+     <y>620</y>
+     <width>911</width>
+     <height>171</height>
     </rect>
    </property>
    <property name="autoScroll">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="autoScrollMargin">
     <number>0</number>
@@ -106,9 +106,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>90</y>
-     <width>921</width>
-     <height>431</height>
+     <y>100</y>
+     <width>911</width>
+     <height>511</height>
     </rect>
    </property>
    <property name="autoScrollMargin">
@@ -122,67 +122,67 @@
    </property>
    <row>
     <property name="text">
-     <string>url_basic : have_ip</string>
+     <string>Url Basic : have ip</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>url_basic : netloc_too_long</string>
+     <string>Url Basic : netloc too long</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>url_basic : have_unusual</string>
+     <string>Url Basic : have unusual</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>url_basic : in_phish_tank</string>
+     <string>Url Basic : in phish tank</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>url_basic : have_redirect</string>
+     <string>Url Basic: have redirect</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>url_advance : low_pr</string>
+     <string>Url Advance : low pr</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>url_advance : create_less_3_month</string>
+     <string>Url_Advance : create less 3 month</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>html : have_script</string>
+     <string>Html : have script</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>plain : abnormal_time</string>
+     <string>Plain : abnormal time</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>plain : inducible_title</string>
+     <string>Plain : inducible title</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>plain : inducible_content</string>
+     <string>Plain : inducible content</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>Accessory : unusual_size</string>
+     <string>Accessory : unusual size</string>
     </property>
    </row>
    <row>
     <property name="text">
-     <string>Accessory : trick_type</string>
+     <string>Accessory : trick type</string>
     </property>
    </row>
    <column>
@@ -207,7 +207,7 @@
    </column>
    <column>
     <property name="text">
-     <string>Current Result</string>
+     <string>Current Status</string>
     </property>
    </column>
    <item row="0" column="0">
@@ -541,7 +541,7 @@
     <rect>
      <x>150</x>
      <y>40</y>
-     <width>141</width>
+     <width>781</width>
      <height>16</height>
     </rect>
    </property>
