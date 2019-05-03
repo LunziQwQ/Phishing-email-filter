@@ -1,5 +1,4 @@
 import time
-import random
 
 from PyQt5.QtCore import QFile, Qt
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView, QApplication
@@ -118,3 +117,5 @@ class MainController(QMainWindow, Ui_MainWindow):
     def start_on_click(self):
         self.detect_report_window = DetectReportController(self.email_info_list, self.check_list)
         self.detect_report_window.show()
+        QApplication.processEvents()
+        self.detect_report_window.exec()

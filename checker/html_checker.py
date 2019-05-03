@@ -9,29 +9,28 @@ class HtmlChecker:
     def __init__(self, eml_info, is_connected):
         self.eml_info = eml_info
         self.is_connected = is_connected
-
-        self.check_result = {
-            "html": {
-                "count": len(self.eml_info.html_block),
-                "have_script": {"count": 0, "status": WAITING, "process": 0}
-            }
-        }
         self.invoker = {
             "have_script": self.have_script
         }
 
     def check(self, check_list):
+        check_result = {
+            "html": {
+                "count": len(self.eml_info.html_block),
+                "have_script": {"count": 0, "status": WAITING, "process": 0}
+            }
+        }
         for item in check_list:
-            if item not in self.check_result["html"]:
+            if item not in check_result["html"]:
                 continue
 
-            self.check_result["html"][item]["status"] = SAFE
+            check_result["html"][item]["status"] = SAFE
             for html_block in self.eml_info.html_block:
-                self.check_result["html"][item]["process"] += 1
-                self.check_result["html"][item]["count"] += 1 if self.invoker[item](html_block) else 0
-                if self.check_result["html"][item]["count"] > 1:
-                    self.check_result["html"][item]["status"] = THREATENING
-                yield self.check_result
+                check_result["html"][item]["process"] += 1
+                check_result["html"][item]["count"] += 1 if self.invoker[item](html_block) else 0
+                if check_result["html"][item]["count"] > 1:
+                    check_result["html"][item]["status"] = THREATENING
+                yield check_result
 
     def detect_time(self, check_list):
         time = 0.0
@@ -44,4 +43,3 @@ class HtmlChecker:
     @staticmethod
     def have_script(html):
         return "<script>" in html or "</script>"
- 

@@ -29,18 +29,6 @@ class UrlChecker:
         self.eml_info = eml_info
         self.is_connected = is_connected
 
-        self.check_result = {
-            "url": {
-                "count": len(self.eml_info.urls),
-                "have_ip": {"count": 0, "status": WAITING, "process": 0},
-                "netloc_too_long": {"count": 0, "status": WAITING, "process": 0},
-                "low_pr": {"count": 0, "status": WAITING, "process": 0},
-                "have_unusual": {"count": 0, "status": WAITING, "process": 0},
-                "in_phish_tank": {"count": 0, "status": WAITING, "process": 0},
-                "create_less_3_month": {"count": 0, "status": WAITING, "process": 0},
-                "have_redirect": {"count": 0, "status": WAITING, "process": 0}
-            }
-        }
         self.invoker = {
             "have_ip": UrlChecker.have_ip,
             "netloc_too_long": UrlChecker.netloc_too_long,
@@ -52,21 +40,36 @@ class UrlChecker:
         }
 
     def check(self, check_list):
+        check_result = {
+            "url": {
+                "count": len(self.eml_info.urls),
+                "have_ip": {"count": 0, "status": WAITING, "process": 0},
+                "netloc_too_long": {"count": 0, "status": WAITING, "process": 0},
+                "low_pr": {"count": 0, "status": WAITING, "process": 0},
+                "have_unusual": {"count": 0, "status": WAITING, "process": 0},
+                "in_phish_tank": {"count": 0, "status": WAITING, "process": 0},
+                "create_less_3_month": {"count": 0, "status": WAITING, "process": 0},
+                "have_redirect": {"count": 0, "status": WAITING, "process": 0}
+            }
+        }
+
         if not self.is_connected:
-            check_list.remove("create_less_3_month")
-            check_list.remove("low_pr")
+            if "create_less_3_month" in check_list:
+                check_list.remove("create_less_3_month")
+            if "low_pr" in check_list:
+                check_list.remove("low_pr")
 
         for item in check_list:
-            if item not in self.check_result["url"]:
+            if item not in check_result["url"]:
                 continue
 
-            self.check_result["url"][item]["status"] = SAFE
+            check_result["url"][item]["status"] = SAFE
             for url in self.eml_info.urls:
-                self.check_result["url"][item]["process"] += 1
-                self.check_result["url"][item]["count"] += 1 if self.invoker[item](url) else 0
-                if self.check_result["url"][item]["count"] > 1:
-                    self.check_result["url"][item]["status"] = THREATENING
-                yield self.check_result
+                check_result["url"][item]["process"] += 1
+                check_result["url"][item]["count"] += 1 if self.invoker[item](url) else 0
+                if check_result["url"][item]["count"] > 1:
+                    check_result["url"][item]["status"] = THREATENING
+                yield check_result
 
     def detect_time(self, check_list):
         time = 0.0

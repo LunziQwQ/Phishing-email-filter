@@ -14,16 +14,6 @@ class CommonChecker:
     def __init__(self, eml_info, is_connected):
         self.eml_info = eml_info
         self.is_conected = is_connected
-
-        self.check_result = {
-            "common": {
-                "count": len(self.eml_info.html_block),
-                "abnormal_time": {"count": 0, "status": WAITING, "process": 0},
-                "inducible_title": {"count": 0, "status": WAITING, "process": "NA"},
-                "inducible_content": {"count": 0, "status": WAITING, "process": "NA"}
-            }
-        }
-
         self.invoker = {
             "abnormal_time": self.is_abnormal_time,
             "inducible_title": self.inducible_title,
@@ -31,15 +21,23 @@ class CommonChecker:
         }
 
     def check(self, check_list):
+        check_result = {
+            "common": {
+                "count": len(self.eml_info.html_block),
+                "abnormal_time": {"count": 0, "status": WAITING, "process": 0},
+                "inducible_title": {"count": 0, "status": WAITING, "process": "NA"},
+                "inducible_content": {"count": 0, "status": WAITING, "process": "NA"}
+            }
+        }
         for item in check_list:
-            if item not in self.check_result["common"]:
+            if item not in check_result["common"]:
                 continue
 
-            self.check_result["common"][item]["status"] = PROCESSING
-            self.check_result["common"][item]["count"] += self.invoker[item](self.eml_info)
-            self.check_result["common"][item]["status"] = SAFE if \
-                self.check_result["common"][item]["count"] else THREATENING
-            yield self.check_result
+            check_result["common"][item]["status"] = PROCESSING
+            check_result["common"][item]["count"] += self.invoker[item](self.eml_info)
+            check_result["common"][item]["status"] = SAFE if \
+                check_result["common"][item]["count"] else THREATENING
+            yield check_result
 
     def detect_time(self, check_list):
         time = self.check_time["abnormal_time"] + self.check_time["inducible_title"]
