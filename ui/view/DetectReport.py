@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(951, 849)
+        Dialog.resize(951, 810)
         self.total_progressBar = QtWidgets.QProgressBar(Dialog)
         self.total_progressBar.setGeometry(QtCore.QRect(150, 10, 791, 21))
         self.total_progressBar.setProperty("value", 37)
@@ -20,7 +20,7 @@ class Ui_Dialog(object):
         self.total_progress_label.setGeometry(QtCore.QRect(20, 10, 121, 16))
         self.total_progress_label.setObjectName("total_progress_label")
         self.total_feedback_tableWidget = QtWidgets.QTableWidget(Dialog)
-        self.total_feedback_tableWidget.setGeometry(QtCore.QRect(20, 640, 911, 171))
+        self.total_feedback_tableWidget.setGeometry(QtCore.QRect(20, 620, 911, 171))
         self.total_feedback_tableWidget.setAutoScroll(True)
         self.total_feedback_tableWidget.setAutoScrollMargin(0)
         self.total_feedback_tableWidget.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
@@ -44,7 +44,7 @@ class Ui_Dialog(object):
         self.current_feedback_label.setGeometry(QtCore.QRect(20, 70, 161, 21))
         self.current_feedback_label.setObjectName("current_feedback_label")
         self.current_feedback_tableWidget = QtWidgets.QTableWidget(Dialog)
-        self.current_feedback_tableWidget.setGeometry(QtCore.QRect(20, 100, 911, 531))
+        self.current_feedback_tableWidget.setGeometry(QtCore.QRect(20, 100, 911, 511))
         self.current_feedback_tableWidget.setAutoScrollMargin(0)
         self.current_feedback_tableWidget.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
         self.current_feedback_tableWidget.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
