@@ -23,6 +23,13 @@ class Checker(object):
 
         return time
 
-    def check(self, checker_list):
+    def check(self, check_list):
         for checker in self.checkers:
-            yield checker.check(checker_list)
+            yield checker.check(check_list)
+
+    def step_count(self, check_list):
+        count = 0
+        for checker in self.checkers:
+            count += checker.step_count(check_list)
+
+        return count

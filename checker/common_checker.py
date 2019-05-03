@@ -46,6 +46,10 @@ class CommonChecker:
                 time += len(pb) * self.check_time["inducible_content"]
         return time
 
+    def step_count(self, check_list):
+        plain_chunk_size = len(set(check_list).intersection({"inducible_title", "inducible_content"}))
+        return 1 + len(self.eml_info.plain_block) * plain_chunk_size
+
     @classmethod
     def init_inducible_db(cls):
         if not cls.inducible_db:

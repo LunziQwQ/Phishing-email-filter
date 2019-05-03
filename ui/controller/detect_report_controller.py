@@ -1,3 +1,6 @@
+import copy
+import time
+
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 
 from checker.checker_items import full_check_items
@@ -9,7 +12,20 @@ class DetectReportController(QMainWindow, Ui_Dialog):
         super(DetectReportController, self).__init__()
         self.setupUi(self)
         self.email_info_list = email_info_list
-        self.check_list = check_list
+        self.check_list = copy.deepcopy(check_list)
+        self.total_progressBar.setValue(0)
+
+        chunk_length = 0
+        for ei in self.email_info_list:
+            chunk_length += self.email_info_list[ei]["checker"].step_count(self.check_list)
+        self.step_add = 100.0 / chunk_length if chunk_length != 0 else 0
+
+    def update_process(self, add):
+        value = self.total_progressBar.value()
+        now_value = value + add
+        if now_value > 100:
+            now_value = 100
+        self.total_progressBar.setValue(now_value)
 
     def exec(self):
         QApplication.processEvents()
@@ -17,14 +33,17 @@ class DetectReportController(QMainWindow, Ui_Dialog):
         for ei in self.email_info_list:
             email_info = self.email_info_list[ei]
             checker = email_info["checker"]
+            self.email_subject_label.setText("Email Subject: " + email_info["info"].subject)
             for items in checker.check(self.check_list):
                 for item in items:
                     result.update(item)
                     table = self.report_to_feedback_table(result)
                     email_info["table"] = table
-                    self.email_subject_label.setText("Email Subject: " + email_info["info"].subject)
                     self.draw_feedback_table(table)
+                    self.update_process(self.step_add)
                     QApplication.processEvents()
+                    time.sleep(0.2)
+        self.update_process(self.step_add)
 
     @staticmethod
     def report_to_feedback_table(result):

@@ -40,6 +40,9 @@ class HtmlChecker:
                 time += html_count * self.check_time[ct]
         return time
 
+    def step_count(self, check_list):
+        return len(self.eml_info.html_block) * len(set(check_list).intersection(set(self.check_time.keys())))
+
     @staticmethod
     def have_script(html):
         return "<script>" in html or "</script>"

@@ -79,6 +79,9 @@ class UrlChecker:
                 time += url_count * self.check_time[ct]
         return time
 
+    def step_count(self, check_list):
+        return len(self.eml_info.urls) * len(set(check_list).intersection(set(self.check_time.keys())))
+
     @classmethod
     def init_phish_tank_db(cls):
         if not cls.phish_tank_db:
