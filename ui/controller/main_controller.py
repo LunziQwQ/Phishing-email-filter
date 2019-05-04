@@ -1,7 +1,7 @@
 import time
 
 from PyQt5.QtCore import QFile, Qt
-from PyQt5.QtWidgets import QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView, QApplication
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QTableWidgetItem, QHeaderView, QApplication, QMessageBox
 from checker import checker_items
 from checker.checker import Checker
 from reader.eml_reader import EmlReader
@@ -53,7 +53,12 @@ class MainController(QMainWindow, Ui_MainWindow):
             f = QFile(fname[0])  # 创建文件对象，不创建文件对象也不报错 也可以读文件和写文件
             # open()会自动返回一个文件对象
             reader = EmlReader(fname[0])
-            info = reader.read()
+            try:
+                info = reader.read()
+            except UnicodeDecodeError:
+                QMessageBox.warning(self, "Read eml error", "Find unknown unicode in eml. Can't parse this file.",
+                                    QMessageBox.Yes)
+                return
             now_row = self.email_list_table.rowCount()
             self.email_list_table.setRowCount(now_row + 1)
 

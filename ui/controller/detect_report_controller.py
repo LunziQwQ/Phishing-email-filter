@@ -1,7 +1,7 @@
 import copy
 import time
 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QMessageBox
 
 from checker.checker_items import full_check_items
 from evaluation.evaluation import Evaluation
@@ -67,6 +67,7 @@ class DetectReportController(QMainWindow, Ui_Dialog):
             self.draw_email_list_table()
 
         self.total_progressBar.setValue(100)
+        QMessageBox.information(self, "Check Finish", "Check all email finish!~", QMessageBox.Yes)
 
     @staticmethod
     def report_to_feedback_table(result):
