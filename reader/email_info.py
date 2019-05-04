@@ -29,37 +29,6 @@ class EmailInfo:
 
         if eml.is_multipart():
             for block in eml.walk():
-                try:
-                    block_charset = block.get_content_charset()
-                    if not block_charset:
-                        block_charset = "utf-8"
-
-                    # 保存html类型的内容块
-                    if block.get_content_type() == "text/html":
-                        self.html_block.append(
-                            block.get_payload(decode=True).strip().decode(block_charset))
-
-                    # 保存plain文本的内容块
-                    if block.get_content_type() == "text/plain":
-                        self.plain_block.append(
-                            block.get_payload(decode=True).strip().decode(block_charset))
-                except UnicodeDecodeError:
-                    try:
-                        # 适应中文编码
-                        if block.get_content_type() == "text/html":
-                            self.html_block.append(block.get_payload(decode=True).strip().decode("gbk"))
-
-                        # 适应中文编码
-                        if block.get_content_type() == "text/plain":
-                            self.plain_block.append(block.get_payload(decode=True).strip().decode("gbk"))
-                    except UnicodeDecodeError:
-                        if block.get_content_type() == "text/html":
-                            self.html_block.append(block.get_payload(decode=True).strip().decode("gb18030"))
-
-                        if block.get_content_type() == "text/plain":
-                            self.plain_block.append(block.get_payload(decode=True).strip().decode("gb18030"))
-
-                # 保存附件到/tmp/pef/pef_files
                 if block.get_filename():
                     file_name = block.get_filename()
                     file_data = block.get_payload(decode=True)
@@ -70,6 +39,36 @@ class EmailInfo:
                     with open(path.join("/tmp/pef/pef_files", self.subject, file_name), "wb") as f:
                         f.write(file_data)
                     self.files.append(save_path)
+                else:
+                    try:
+                        block_charset = block.get_content_charset()
+                        if not block_charset:
+                            block_charset = "utf-8"
+
+                        # 保存html类型的内容块
+                        if block.get_content_type() == "text/html":
+                            self.html_block.append(
+                                block.get_payload(decode=True).strip().decode(block_charset))
+
+                        # 保存plain文本的内容块
+                        if block.get_content_type() == "text/plain":
+                            self.plain_block.append(
+                                block.get_payload(decode=True).strip().decode(block_charset))
+                    except UnicodeDecodeError:
+                        try:
+                            # 适应中文编码
+                            if block.get_content_type() == "text/html":
+                                self.html_block.append(block.get_payload(decode=True).strip().decode("gbk"))
+
+                            # 适应中文编码
+                            if block.get_content_type() == "text/plain":
+                                self.plain_block.append(block.get_payload(decode=True).strip().decode("gbk"))
+                        except UnicodeDecodeError:
+                            if block.get_content_type() == "text/html":
+                                self.html_block.append(block.get_payload(decode=True).strip().decode("gb18030"))
+
+                            if block.get_content_type() == "text/plain":
+                                self.plain_block.append(block.get_payload(decode=True).strip().decode("gb18030"))
 
         self.a_tags = self.get_a_tags()
         self.urls = [a_tag[0] for a_tag in self.a_tags]
