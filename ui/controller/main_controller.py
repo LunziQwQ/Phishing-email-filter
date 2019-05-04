@@ -93,7 +93,7 @@ class MainController(QMainWindow, Ui_MainWindow):
             self.check_list.extend(checker_items.html)
 
         if self.accessory_cb.checkState() == Qt.Checked:
-            self.check_list.extend(checker_items.accessory)
+            self.check_list.extend(checker_items.attached)
 
         if self.url_basic_cb.checkState() == Qt.Checked:
             self.check_list.extend(checker_items.url_basic)

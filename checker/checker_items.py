@@ -17,11 +17,11 @@ plain = [
     "inducible_title",
     "inducible_content"
 ]
-accessory = [
+attached = [
     "unusual_size",
     "trick_type"
 ]
 
 full_check_items = []
-for items in [url_basic, url_advance, html, plain, accessory]:
+for items in [url_basic, url_advance, html, plain, attached]:
     full_check_items.extend(items)

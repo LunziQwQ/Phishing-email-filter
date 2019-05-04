@@ -71,6 +71,9 @@ class UrlChecker:
                     check_result["url"][item]["status"] = THREATENING
                 yield check_result
 
+            if len(self.eml_info.urls) == 0:
+                yield check_result
+
     def detect_time(self, check_list):
         time = 0.0
         url_count = len(self.eml_info.urls)

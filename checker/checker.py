@@ -1,3 +1,4 @@
+from checker.attached_checker import AttachedChecker
 from checker.common_checker import CommonChecker
 from checker.html_checker import HtmlChecker
 from checker.url_checker import UrlChecker
@@ -12,7 +13,8 @@ class Checker(object):
         self.checkers = [
             UrlChecker(email_info, self.is_online),
             CommonChecker(email_info, self.is_online),
-            HtmlChecker(email_info, self.is_online)
+            HtmlChecker(email_info, self.is_online),
+            AttachedChecker(email_info, self.is_online)
         ]
 
     def detect_time(self, checker_list):
