@@ -49,7 +49,7 @@ class AttachedChecker:
         return time
 
     def step_count(self, check_list):
-        return len(self.eml_info.html_block) * len(set(check_list).intersection(set(self.check_time.keys())))
+        return len(self.eml_info.files) * len(set(check_list).intersection(set(self.check_time.keys())))
 
     @classmethod
     def init_file_type_db(cls):

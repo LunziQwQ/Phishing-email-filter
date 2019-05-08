@@ -49,17 +49,17 @@ class MainController(QMainWindow, Ui_MainWindow):
         fname = QFileDialog.getOpenFileNames(self, "Open File", "./", "Email (*.eml *.mbox)")
         # 打开文件 返回一个字符串第一个是路径， 第二个是要打开文件的类型
         # 如果用户主动关闭文件对话框，则返回值为空
+        total = 0
+        skip = 0
         if fname[0]:  # 判断路径非空
             for fn in fname[0]:
                 f = QFile(fn)  # 创建文件对象，不创建文件对象也不报错 也可以读文件和写文件
                 # open()会自动返回一个文件对象
                 reader = EmlReader(fn)
-                try:
-                    infos = reader.read()
-                except UnicodeDecodeError:
-                    QMessageBox.warning(self, "Read eml error", "Find unknown unicode in eml. Can't parse this file.",
-                                        QMessageBox.Yes)
-                    return
+                infos, _skip, _total = reader.read()
+                total += _total
+                skip += _skip
+
                 for info in infos:
                     now_row = self.email_list_table.rowCount()
                     self.email_list_table.setRowCount(now_row + 1)
@@ -77,6 +77,9 @@ class MainController(QMainWindow, Ui_MainWindow):
                     self.email_list_table.setItem(now_row, 4, QTableWidgetItem(time.asctime(info.date)))
 
             self.update_detect_time_label()
+            QMessageBox.warning(self, "Read eml finish",
+                                "Read all %d emails. Skip %d emails because unknown unicode" % (total, skip),
+                                QMessageBox.Yes)
 
     def update_detect_time_label(self):
         t = 0.0

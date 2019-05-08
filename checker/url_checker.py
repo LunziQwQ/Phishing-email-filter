@@ -101,7 +101,10 @@ class UrlChecker:
 
     @staticmethod
     def netloc_too_long(url):
-        return len(urllib3.util.parse_url(url).netloc) > 30
+        if urllib3.util.parse_url(url).netloc:
+            return len(urllib3.util.parse_url(url).netloc) > 30
+        else:
+            return False
 
     @staticmethod
     def have_redirect(url):

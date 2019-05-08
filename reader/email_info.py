@@ -30,13 +30,14 @@ class EmailInfo:
         if eml.is_multipart():
             for block in eml.walk():
                 if block.get_filename():
-                    file_name = block.get_filename()
+                    invaild_re = r'[\\/:*?"<>|\r\n\t]+'
+                    file_name = re.sub(invaild_re, "", block.get_filename())
                     file_data = block.get_payload(decode=True)
-                    save_path = path.join("/tmp/pef/pef_files", self.subject, file_name)
+                    save_path = path.join("/tmp/pef/pef_files", file_name)
                     if not path.exists(path.dirname(save_path)):
                         os.makedirs(path.dirname(save_path))
 
-                    with open(path.join("/tmp/pef/pef_files", self.subject, file_name), "wb") as f:
+                    with open(path.join(save_path), "wb") as f:
                         f.write(file_data)
                     self.files.append(save_path)
                 else:

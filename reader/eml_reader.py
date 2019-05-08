@@ -11,17 +11,26 @@ class EmlReader:
         self.emls = []
 
         _, ext = os.path.splitext(path)
-        if ext == "mbox":
-            for message in mailbox.mbox("/Users/lunzi/Projects/Python/phishing-email-filter/sample_emls/phishing-2015"):
+        if ext == ".mbox":
+            for message in mailbox.mbox(path):
                 try:
-                    eml = email.message_from_string(message)
+                    eml = email.message_from_string(str(message))
                     self.emls.append(eml)
-                except Exception:
+                except Exception as e:
                     print("parse error. skip one~")
 
-        if ext == "eml":
+        if ext == ".eml":
             with open(path, "r") as f:
                 self.emls.append(email.message_from_file(f))
 
     def read(self):
-        return [EmailInfo(eml) for eml in self.emls]
+        list = []
+        skip = 0
+        for eml in self.emls:
+            try:
+                info = EmailInfo(eml)
+                list.append(info)
+            except UnicodeDecodeError:
+                skip += 1
+
+        return list, skip, len(self.emls)

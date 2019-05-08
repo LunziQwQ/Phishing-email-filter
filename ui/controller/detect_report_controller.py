@@ -20,22 +20,22 @@ class DetectReportController(QMainWindow, Ui_Dialog):
 
         self.update_feedback = True
         self.total_progressBar.setValue(0)
+        self.process_value = 0.0
 
         step_count = 0
         for info_index in self.email_info_list:
             step_count += self.email_info_list[info_index]["checker"].step_count(self.check_list)
-        self.step_length = 100.0 / step_count if step_count != 0 else 0
+        self.step_length = 100.0 / step_count if step_count != 0 else 1
 
         self.email_list_table = [[self.email_info_list[info_index]["info"].subject, "waiting", "", ""] for info_index in
                                  email_info_list]
         self.draw_email_list_table()
 
     def update_process(self, add):
-        value = self.total_progressBar.value()
-        now_value = value + add
-        if now_value > 100:
-            now_value = 100
-        self.total_progressBar.setValue(now_value)
+        self.process_value += add
+        if self.process_value > 100:
+            self.process_value = 100
+        self.total_progressBar.setValue(self.process_value)
 
     def exec(self):
         QApplication.processEvents()
@@ -62,7 +62,6 @@ class DetectReportController(QMainWindow, Ui_Dialog):
                     self.draw_email_list_table()
 
                     QApplication.processEvents()
-            self.update_process(self.step_length)
             self.email_list_table[ei][1] = "finished"
             self.draw_email_list_table()
 
@@ -110,6 +109,7 @@ class DetectReportController(QMainWindow, Ui_Dialog):
     def email_list_table_on_click(self, row, column):
         self.update_feedback = self.email_list_table[row][1] == "processing"
         if "table" in self.email_info_list[str(row)]:
+            self.current_email_subject_label.setText(self.email_info_list[str(row)]["info"].subject)
             self.draw_feedback_table(self.email_info_list[str(row)]["table"], force_update=True)
             QApplication.processEvents()
 
