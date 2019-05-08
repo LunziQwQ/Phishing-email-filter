@@ -1,5 +1,4 @@
 import copy
-import time
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QMessageBox
 
