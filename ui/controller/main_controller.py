@@ -47,14 +47,11 @@ class MainController(QMainWindow, Ui_MainWindow):
 
     def import_eml_on_click(self):
         fname = QFileDialog.getOpenFileNames(self, "Open File", "./", "Email (*.eml *.mbox)")
-        # 打开文件 返回一个字符串第一个是路径， 第二个是要打开文件的类型
-        # 如果用户主动关闭文件对话框，则返回值为空
         total = 0
         skip = 0
-        if fname[0]:  # 判断路径非空
+        if fname[0]:
             for fn in fname[0]:
-                f = QFile(fn)  # 创建文件对象，不创建文件对象也不报错 也可以读文件和写文件
-                # open()会自动返回一个文件对象
+                f = QFile(fn)
                 reader = EmlReader(fn)
                 infos, _skip, _total = reader.read()
                 total += _total
