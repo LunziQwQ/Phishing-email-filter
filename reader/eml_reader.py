@@ -26,11 +26,13 @@ class EmlReader:
     def read(self):
         list = []
         skip = 0
+        total = len(self.emls)
         for eml in self.emls:
             try:
                 info = EmailInfo(eml)
                 list.append(info)
             except UnicodeDecodeError:
+                print("parse error. skip one~")
                 skip += 1
-
-        return list, skip, len(self.emls)
+        print("read finish: success %d, skip %d, total:%d" % (total - skip, skip, total))
+        return list, skip, total

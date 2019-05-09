@@ -1,21 +1,21 @@
 class Evaluation:
     weights = {
-        "have_ip": 10,
-        "netloc_too_long": 5,
+        "have_ip": 15,
+        "netloc_too_long": 7.5,
         "have_unusual": 10,
         "in_phish_tank": 80,
-        "have_redirect": 15,
+        "have_redirect": 12.5,
         "low_pr": 5,
-        "create_less_3_month": 15,
+        "create_less_3_month": 17.5,
         "have_script": 5,
-        "abnormal_time": 10,
-        "inducible_title": 30,
-        "inducible_content": 20,
-        "unusual_size": 10,
+        "abnormal_time": 12.5,
+        "inducible_title": 17.5,
+        "inducible_content": 25,
+        "unusual_size": 12.5,
         "trick_type": 30
     }
 
-    limit = 20
+    limit = 15
 
     @classmethod
     def evaluate(cls, report):

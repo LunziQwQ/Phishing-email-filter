@@ -1,5 +1,6 @@
 import copy
 
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QMessageBox, QAbstractItemView
 
 from checker.checker_items import full_check_items
@@ -18,6 +19,8 @@ class DetectReportController(QMainWindow, Ui_Dialog):
         self.total_feedback_tableWidget.focusOutEvent = self.email_list_table_out_focus
 
         self.update_feedback = True
+        self.stop_flag = False
+        self.computing_flag = False
         self.total_progressBar.setValue(0)
         self.process_value = 0.0
 
@@ -38,6 +41,8 @@ class DetectReportController(QMainWindow, Ui_Dialog):
 
     def exec(self):
         QApplication.processEvents()
+        self.computing_flag = True
+
         result = {}
         safe_count = 0
         threatening_count = 0
@@ -50,6 +55,8 @@ class DetectReportController(QMainWindow, Ui_Dialog):
             for items in checker.check(self.check_list):
                 for item in items:
                     result.update(item)
+                    if self.stop_flag:
+                        return
 
                     table = self.report_to_feedback_table(result)
                     email_info["table"] = table
@@ -59,7 +66,7 @@ class DetectReportController(QMainWindow, Ui_Dialog):
 
                     score = Evaluation.evaluate(result)
                     self.email_list_table[ei][2] = "safe" if score < Evaluation.limit else "threatening"
-                    self.email_list_table[ei][3] = "%.2f%%" % score
+                    self.email_list_table[ei][3] = "%.1f%%" % score
 
                     self.draw_email_list_table(ei)
 
@@ -69,12 +76,15 @@ class DetectReportController(QMainWindow, Ui_Dialog):
                 safe_count += 1
             else:
                 threatening_count += 1
+            print("Check NO.%d finish -> %s" % (ei + 1, self.email_list_table[ei][2]))
 
             self.email_list_table[ei][1] = "finished"
             self.draw_email_list_table(ei)
 
         self.total_progressBar.setValue(100)
-        QMessageBox.information(self, "Check Finish", "%d safe, %d threatening, %d total ~" %
+        self.computing_flag = False
+        QMessageBox.information(self, "Check Finish", "%d safe, %d threatening, %d total ~\n"
+                                                      "You can click bottom email list table to view each report" %
                                 (safe_count, threatening_count, len(self.email_info_list)), QMessageBox.Yes)
 
     @staticmethod
@@ -128,3 +138,18 @@ class DetectReportController(QMainWindow, Ui_Dialog):
 
     def email_list_table_out_focus(self, event):
         self.update_feedback = True
+
+    def closeEvent(self, event):
+        if self.computing_flag:
+            reply = QtWidgets.QMessageBox.question(self,
+                                                   'Exit Computing',
+                                                   "Are you sure to stop computing and exit？",
+                                                   QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                                                   QtWidgets.QMessageBox.No)
+            if reply == QtWidgets.QMessageBox.Yes:
+                self.stop_flag = True
+                event.accept()
+            else:
+                event.ignore()
+        else:
+            event.accept()
