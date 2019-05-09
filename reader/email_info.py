@@ -13,7 +13,7 @@ class EmailInfo:
         """
         self.is_multipart = eml.is_multipart()
         self.subject = eml.get("subject")
-        if self.subject.startswith("="):
+        if self.subject and self.subject.startswith("="):
             self.subject = self.decode_multiline_header(self.subject)
         self.sender = email.utils.parseaddr(eml.get("from"))[1]
         self.receiver = email.utils.parseaddr(eml.get("to"))[1]
@@ -76,16 +76,19 @@ class EmailInfo:
 
     @staticmethod
     def decode_multiline_header(s):
-        ret = []
-        for b, e in email.header.decode_header(re.sub(r'\n\s+', ' ', s)):
-            if e:
-                if e.lower() == 'gb2312':
-                    e = 'gb18030'
-                b = b.decode(e)
-            elif isinstance(b, bytes):
-                b = b.decode('ascii')
-            ret.append(b)
-        return ''.join(ret)
+        try:
+            ret = []
+            for b, e in email.header.decode_header(re.sub(r'\n\s+', ' ', s)):
+                if e:
+                    if e.lower() == 'gb2312':
+                        e = 'gb18030'
+                    b = b.decode(e)
+                elif isinstance(b, bytes):
+                    b = b.decode('ascii')
+                ret.append(b)
+            return ''.join(ret)
+        except Exception:
+            return s
 
     def get_a_tags(self):
         """

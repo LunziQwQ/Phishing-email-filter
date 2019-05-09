@@ -104,9 +104,9 @@ class UrlChecker:
 
     @staticmethod
     def netloc_too_long(url):
-        if urllib3.util.parse_url(url).netloc:
+        try:
             return len(urllib3.util.parse_url(url).netloc) > 30
-        else:
+        except Exception:
             return False
 
     @staticmethod

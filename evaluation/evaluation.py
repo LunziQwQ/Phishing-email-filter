@@ -15,6 +15,8 @@ class Evaluation:
         "trick_type": 30
     }
 
+    limit = 20
+
     @classmethod
     def evaluate(cls, report):
         score = 0.0
